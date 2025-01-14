@@ -1,0 +1,43 @@
+
+.long-text {
+    overflow: auto;
+}
+
+.user-bg-color {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.select2-selection__choice {
+    color: black !important;
+    padding-left: 25px !important;
+    /* margin-left: 1px !important; */
+}
+
+.select2-selection__choice__remove {
+    margin-left: 1px !important;
+}
+
+/* For Chrome, Safari, Edge, and Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/*For Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.btn.btn-orange {
+    background-color: var(--bs-orange);
+    color: white;
+    border:  none;
+}
+
+.btn.btn-orange:hover {
+    background-color: #d14925;
+}
+
+.text-orange {
+    color: var(--bs-orange);
+}
