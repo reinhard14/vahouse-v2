@@ -5,7 +5,7 @@
     <div class="row">
         <div class="row justify-content-center">
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="row my-5">
                     <div class="col">
                         <div class="card">
@@ -18,8 +18,8 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
-                                        <div class="col-md-6">
+                                        <label for="email" class="">{{ __('Email') }}</label>
+                                        <div class="col">
                                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -30,8 +30,8 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-                                        <div class="col-md-6">
+                                        <label for="password" class="">{{ __('Password') }}</label>
+                                        <div class="col">
                                             <div class="input-group">
                                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" data-toggle="password" required autocomplete="current-password">
                                                 @error('password')
@@ -42,15 +42,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="row my-4">
                                         <div class="col text-right">
-                                            <a href="/" class="text-orange">Forgot Password?</a>
+                                            <a href="#" class="text-orange">Forgot Password?</a>
                                         </div>
                                     </div>
 
-                                    <div class="row mb-3">
+                                    <div class="row mb-4">
                                         <div class="col text-center">
-                                            <button type="submit" class="btn btn-orange form-control">
+                                            <button type="submit" class="btn btn-login form-control">
                                                 {{-- <span class="orange-text">  --}}
                                                     {{ __('Sign in') }}
                                                 {{-- </span> --}}
@@ -58,11 +58,16 @@
                                         </div>
                                     </div>
 
-                                    <hr>
-
-                                    <div class="row mb-3">
+                                    <div class="row">
                                         <div class="col text-center">
-                                            <button type="submit" class="btn btn-orange px-5">
+                                            <small>or</small>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row my-4">
+                                        <div class="col text-center">
+                                            <button type="submit" class="btn btn-orange form-control">
                                                 {{ __('Apply as VA') }}
                                             </button>
                                         </div>
