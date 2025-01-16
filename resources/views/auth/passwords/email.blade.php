@@ -4,21 +4,29 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
-                {{-- <div class="card-header">{{ __('Forgot Password') }}</div> --}}
 
+            <div class="card my-5">
+                {{-- <div class="card-header">{{ __('Forgot Password') }}</div> --}}
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="row text-center mb-4">
+                        <div class="col mb-3">
+                            <img src="{{asset('dist/img/nav-logo.png')}}" width="150px" height="60px">
+                        </div>
+
+                        <h3>Forgot Password</h3>
+                        <p class="text-muted">1 of 1: Reset password</p>
+                    </div>
 
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="email">{{ __('Email Address') }}</label>
+                        <div class="row mb-4">
+                            <label for="email">{{ __('Email Address') }} <span class="text-danger">*</span> </label>
 
                             <div>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -31,11 +39,17 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
+                        <div class="row mb-4">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-orange">
                                     {{ __('Password Reset') }}
                                 </button>
+                            </div>
+                        </div>
+
+                        <div class="row text-center">
+                            <div class="col">
+                                <p class="text-muted">Already have an account? <a href="{{ route('login') }}" class="text-orange">Log in</a></p>
                             </div>
                         </div>
                     </form>
