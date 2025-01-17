@@ -3,8 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+        <div class="col-md-6">
+
+            <div class="card my-5">
                 <div class="card-body">
                     <div class="row text-center mb-4">
                         <div class="col mb-3">
@@ -12,7 +13,7 @@
                         </div>
 
                         <h3>Forgot Password</h3>
-                        <p class="text-muted">1 of 2: Reset password</p>
+                        <p class="text-muted">2 of 2: Reset password</p>
                     </div>
 
                     <form method="POST" action="{{ route('password.update') }}">
@@ -21,9 +22,9 @@
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email">{{ __('Email Address') }}<span class="text-danger">*</span></label>
 
-                            <div class="col-md-6">
+                            <div>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -35,9 +36,9 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password">{{ __('Password') }}<span class="text-danger">*</span></label>
 
-                            <div class="col-md-6">
+                            <div>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
@@ -48,10 +49,10 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                        <div class="row mb-4">
+                            <label for="password-confirm">{{ __('Confirm Password') }} <span class="text-danger">*</span></label>
 
-                            <div class="col-md-6">
+                            <div>
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
