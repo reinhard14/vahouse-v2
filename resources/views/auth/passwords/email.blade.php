@@ -6,7 +6,6 @@
         <div class="col-md-6">
 
             <div class="card my-5">
-                {{-- <div class="card-header">{{ __('Forgot Password') }}</div> --}}
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -18,8 +17,8 @@
                             <img src="{{asset('dist/img/nav-logo.png')}}" width="150px" height="60px">
                         </div>
 
-                        <h3>Forgot Password</h3>
-                        <p class="text-muted">1 of 1: Reset password</p>
+                        <h3>Set New Password</h3>
+                        <p class="text-muted">2 of 2: Reset password</p>
                     </div>
 
                     <form method="POST" action="{{ route('password.email') }}">
