@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.va.va-layout')
 
 
 @section('content')
@@ -6,18 +6,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between">
-                    <div class="card-text">
-                        Welcome to VA House Corporation
-                    </div>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#guidelinesModal">
-                            READ IMPORTANT GUIDELINES! CLICK HERE!
-                        </button>
-                    </div>
+            <div class="row my-4">
+                <div class="col">
+                    <h3>Dashboard</h3>
                 </div>
-
+            </div>
+            <div class="card">
                 <div class="card-body">
                     @include('includes.messages')
 
