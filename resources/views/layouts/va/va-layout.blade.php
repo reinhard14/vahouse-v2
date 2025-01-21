@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/sweetalert.css') }}">
     <!-- Custom Styling -->
     <link rel="stylesheet" href="{{ asset('dist/css/customcss.css') }}">
+    <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css') }}">
     <!-- Show password -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -47,9 +48,26 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt"></i>
+                    <a class="nav-link" href="#" role="button">
+                        <i class="bi bi-bell-fill"></i>
                     </a>
+                </li>
+                <li class="nav-item dropdown mr-5 pr-5">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                        </li>
+                        <li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
@@ -82,20 +100,8 @@
                         </li>
                         <li class="nav-item" >
                             <a href="#" class="nav-link {{ request()->segment(2) === 'information' ? 'active' : '' }}">
-                            <i class="bi bi-person-fill-gear"></i>
+                            <i class="bi bi-person-fill"></i>
                             <p>My Information</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-header">ACCOUNT SETTINGS</li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="nav-icon far fa-circle text-danger"></i>
-                                <p> {{ __('Logout') }}</p>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
                             </a>
                         </li>
                     </ul>
