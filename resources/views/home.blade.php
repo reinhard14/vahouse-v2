@@ -4,57 +4,63 @@
 
 <div class="container">
     <div class="row justify-content-center mb-5 pb-5">
-        <div class="col-md-12 mb-5 pb-5">
+        <div class="col-md-10 mb-5 pb-5">
             <div class="row my-4">
                 <div class="col">
                     <h3>Dashboard</h3>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    @include('includes.messages')
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            @include('includes.messages')
 
-                    <div class="row">
-                        <div class="col-md-4 border-right">
-                            <p class="">
-                                Completing your profile will allow us to better understand your qualifications and ensure a smooth evaluation
-                                of your application. This is an essential step before we can consider you for any opportunities.
-                            </p>
-                        </div>
-                        <div class="col">
                             <div class="row">
-                                <div class="col">
-                                    <a class="nav-link" href="#" role="button">
-                                        <i class="bi bi-check-circle-fill"></i> <span>Sign up to a VA House Applicant System</span>
-                                    </a>
-
+                                <div class="col-md-4 border-right">
+                                    <p class="py-3">
+                                        Completing your profile will allow us to better understand your qualifications and ensure a smooth evaluation
+                                        of your application. This is an essential step before we can consider you for any opportunities.
+                                    </p>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col">
-                                    <a class="nav-link" href="#" role="button">
-                                        <i class="bi bi-check-circle-fill"></i> <span class="">Email Verification</span>
-                                    </a>
 
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col">
-                                    <a class="nav-link" href="#" role="button">
-                                        <i class="bi bi-check-circle"></i> <span>Complete Profile</span>
-                                    </a>
-
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col">
-                                    <a class="nav-link" href="#" role="button">
-                                        <i class="bi bi-check-circle"></i> <span>HR Verification</span>
-                                    </a>
-
+                                <div class="col py-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <span class="text-success"> <i class="bi bi-check-circle-fill large-icon"></i></span>
+                                            <span class="pl-3 font-weight-bolder">Sign up to a VA House Applicant System</span>
+                                        </div>
+                                        <div class="col-4 text-right align-content-center">
+                                            <a href="#" class="text-muted">Completed <i class="bi bi-arrow-right-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col ">
+                                            <span class="text-success"> <i class="bi bi-check-circle-fill large-icon"></i></span>
+                                            <span class="pl-3 font-weight-bolder">Email Verification</span>
+                                        </div>
+                                        <div class="col-4 text-right align-content-center">
+                                            <a href="#" class="text-muted">Completed <i class="bi bi-arrow-right-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col">
+                                            <span class="text-secondary"><i class="bi bi-check-circle-fill large-icon"></i></span>
+                                            <span class="pl-3 font-weight-bolder">Complete Profile</span>
+                                        </div>
+                                        <div class="col-4 text-right align-content-center">
+                                            <a href="{{ route('user.edit-profile') }}" class="text-muted"><span class="text-orange pl-3"> Proceed <i class="bi bi-arrow-right-circle"></i></span></a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col">
+                                            <span class="text-secondary"><i class="bi bi-check-circle-fill large-icon"></i></span>
+                                            <span class="pl-3 font-weight-bolder">HR Verification</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -63,6 +69,10 @@
             </div>
         </div>
     </div>
+
+    <div class="row mb-5">
+    </div>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

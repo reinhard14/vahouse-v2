@@ -55,3 +55,8 @@ input[type=number] {
 .btn.btn-login:hover {
     background-color: #d7d6d6;
 }
+
+.large-icon {
+    font-size: 1.6rem;
+    vertical-align: middle;
+}

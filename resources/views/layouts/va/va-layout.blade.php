@@ -76,8 +76,8 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="{{ route('admin.dashboard') }}" class="brand-link">
-                <img src="{{ asset('dist/img/nav-logo.png') }}" alt="VA House Logo" height="23px" width="60px">
+            <a href="{{ route('admin.dashboard') }}" class="brand-link pl-4">
+                <img src="{{ asset('dist/img/nav-logo.png') }}" alt="VA House Logo" height="23px" width="55px">
             </a>
 
             <!-- Sidebar -->
@@ -123,7 +123,7 @@
             <strong>Copyright &copy; {{ \Carbon\Carbon::now()->year }} <a href="#"  data-toggle="tooltip" data-placement="top" title="Developed by: Reinhard">VA House Corporation Management System</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.0.0
+                <b>Version</b> 1.1.0
             </div>
         </footer>
     </div>

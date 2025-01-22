@@ -412,4 +412,8 @@ class UserController extends Controller
         return redirect()->route('user.show', $userId);
     }
 
+    public function editProfile()
+    {
+        return view('user.edit-profile');
+    }
 }
