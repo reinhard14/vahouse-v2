@@ -41,6 +41,15 @@ input[type=number] {
     color: white;
 }
 
+.nav-link.active {
+color: #f26307 !important;
+font-weight: bold;
+}
+
+.nav-link.active:hover {
+color: #d14925 !important;
+}
+
 .text-orange {
     color: var(--bs-orange);
 }
