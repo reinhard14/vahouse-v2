@@ -41,13 +41,22 @@ input[type=number] {
     color: white;
 }
 
-.nav-link.active {
-color: #f26307 !important;
-font-weight: bold;
+.profile-edit-nav {
+    color: #1f1f1f ;
+    font-weight: 600;
 }
 
-.nav-link.active:hover {
-color: #d14925 !important;
+.nav-item.active .nav-link {
+    color: #f26307 ;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: #f26307;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 20px;
+}
+
+.nav-item .nav-link:hover {
+    color: #d14925 ;
 }
 
 .text-orange {
