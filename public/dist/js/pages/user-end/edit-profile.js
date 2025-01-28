@@ -6,4 +6,17 @@ $(document).ready(function() {
         $(this).tab('show');
     });
 
+    $('#availability').select2({
+        tags: true,
+        tokenSeparators: [','],
+        placeholder: '',
+        width: '100%',
+    });
+
+    $('#skills, #softskills, #tools').select2({
+        tags: true,
+        tokenSeparators: [','],
+        placeholder: '',
+        width: '100%',
+    });
 });

@@ -29,11 +29,16 @@ input[type=number] {
 }
 
 .btn.btn-orange {
-    /* background-color: var(--bs-orange); */
     background-color: #f26307;
     color: white;
-    border:  none;
+    border: none;
     border-radius: 10px;
+}
+
+.btn.btn-vah-orange {
+    background-color: #f26307;
+    color: white;
+    border: none;
 }
 
 .btn.btn-orange:hover {
@@ -77,4 +82,28 @@ input[type=number] {
 .large-icon {
     font-size: 1.6rem;
     vertical-align: middle;
+}
+
+.custom-label {
+    font-weight: normal !important;
+}
+
+.select2-selection__choice {
+    background-color: #ffd4a3 !important;
+    color: white;
+    border: none;
+    border-radius: 20px !important;
+    padding: 0 10px;
+    font-size: 14px;
+    margin: 2px;
+    display: inline-flex;
+    align-items: center;
+}
+.select2-selection__choice__remove {
+    color: #ffd4a3;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.select2-selection__choice__remove:hover {
+    color: #ffd4a3;
 }

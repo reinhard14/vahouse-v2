@@ -5,33 +5,57 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Experience Details</h5>
+                <h5 class="modal-title">Add Employment Details</h5>
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
-            <div class="row text-center p-3">
-                <div class="col fst-italic">
-                    Kindly add all of your previous experiences.
-                </div>
-            </div>
+
             <form id="experienceForm">
                 @csrf
                 <input type="hidden" id="user_id" name="user_id" value="{{ Auth::id(); }}">
                 <input type="hidden" id="is_experience_completed" name="is_experience_completed" value="1">
 
                 <div class="modal-body">
-                    <label for="title" class="form-label">Job Experience</label>
+                    <span>Employment Type</span>
+                    <div class="row mb-2">
+
+                        <div class="col">
+                            <input type="radio" id="VA" name="job_type" value="VA">
+                            <label for="VA" class="form-label custom-label">VA</label>
+                        </div>
+                        <div class="col">
+                            <input type="radio" id="Corporate" name="job_type" value="Corporate">
+                            <label for="Corporate" class="form-label custom-label">Corporate</label>
+                        </div>
+                        <div class="col">
+                            <input type="radio" id="BPO" name="job_type" value="BPO">
+                            <label for="BPO" class="form-label custom-label">BPO</label>
+                        </div>
+                    </div>
+
+                    <label for="date" class="form-label custom-label">Date</label>
+                    <div class="input-group mb-3">
+                        <input type="date" class="form-control">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-arrow-right-short"></i></span>
+                        </div>
+                        <input type="date" class="form-control">
+                    </div>
+
+                    <label for="title" class="form-label custom-label">Job Position</label>
                     <input type="text" id="title" name="title" class="form-control mb-2">
 
-                    <label for="duration" class="form-label">Duration of experience</label>
+                    <label for="duration" class="form-label custom-label">Company Name, Company Address</label>
                     <input type="text" id="duration" name="duration" class="form-control mb-2" >
-                    <small>ex. 1 year 6 months</small>
+
+                    <label for="duration" class="form-label custom-label">Job Details</label>
+                    <textarea class="form-control mb-2"></textarea>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" id="saveButton" class="btn btn-primary btn-sm">
-                        <i class="bi bi-plus-square mr-1"></i> Add
+                    <button type="submit" id="saveButton" class="btn btn-vah-orange">
+                        <i class="bi bi-plus-square mr-1"></i> Save
                     </button>
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="bi bi-file-x"></i> Close
                     </button>
                 </div>
