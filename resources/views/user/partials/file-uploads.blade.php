@@ -62,7 +62,7 @@
 <div class="row mb-4">
     <div class="col">
         <label for="">Sample Mock Call</label>
-        <small class="d-block text-muted">Upload at least 2-minute mock-call each. <a href="#">Click here</a> for a sample mockcall</small>
+        <small class="d-block text-muted mb-3">Upload at least 2-minute mock-call each. <a href="#">Click here</a> for a sample mockcall</small>
         <span class="d-block">Inbound</span>
         <input type="file" id="photo_id" name="photo_id" class="form-control" accept=".jpeg, .jpg, .png" required>
         <span class="d-block pt-3">Outbound</span>
