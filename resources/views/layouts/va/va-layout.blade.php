@@ -98,11 +98,27 @@
                             <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-item" >
-                            <a href="#" class="nav-link {{ request()->segment(2) === 'edit-profile' ? 'active' : '' }}">
-                            <i class="bi bi-person-fill"></i>
-                            <p>My Information</p>
+                        <li class="nav-item {{ request()->segment(2) === 'edit-profile' ? 'menu-open' : 'menu' }}">
+                            <a href="{{ route('administrator.index') }}" class="nav-link">
+                                <i class="bi bi-tools"></i>
+                            <p>My Information
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item" >
+                                    <a href="#" class="nav-link {{ request()->segment(2) === 'view-profile' ? 'active' : '' }}">
+                                        <i class="bi bi-person-fill"></i>
+                                        <p>View Profile</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item" >
+                                    <a href="{{ route('user.edit-profile') }}" class="nav-link {{ request()->segment(2) === 'edit-profile' ? 'active' : '' }}">
+                                        <i class="bi bi-person-fill"></i>
+                                        <p>Edit Profile</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
