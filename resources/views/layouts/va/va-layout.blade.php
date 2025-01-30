@@ -99,7 +99,7 @@
                             </a>
                         </li>
                         <li class="nav-item" >
-                            <a href="#" class="nav-link {{ request()->segment(2) === 'information' ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{ request()->segment(2) === 'edit-profile' ? 'active' : '' }}">
                             <i class="bi bi-person-fill"></i>
                             <p>My Information</p>
                             </a>
