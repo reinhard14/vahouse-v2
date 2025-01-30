@@ -80,12 +80,12 @@ Route::middleware('auth')
         Route::post('user/uploadMockcall', [UserController::class, 'uploadMockcall'])->name('user.mockcall');
         Route::post('user/references', [UserController::class, 'storeReferences'])->name('user.references.store');
         Route::delete('user/experiences/{id}', [UserController::class, 'destroyExperience'])->name('user.experienceDelete');
-        Route::get('user/edit-profile', [UserController::class, 'editProfile'])->name('user.edit-profile');
+        // Route::get('user/edit-profile', [UserController::class, 'editProfile'])->name('user.edit-profile');
 });
 Route::middleware(['auth', 'check.user.id'])
     ->group(function () {
-        Route::get('user/{id}', [UserController::class, 'show'])->name('user.show');
-        Route::get('user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+        Route::get('user/view-profile/{id}', [UserController::class, 'show'])->name('user.show');
+        Route::get('user/edit-profile/{id}', [UserController::class, 'edit'])->name('user.edit');
         Route::put('user/{id}', [UserController::class, 'update'])->name('user.update');
 });
 

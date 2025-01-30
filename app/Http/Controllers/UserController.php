@@ -188,41 +188,9 @@ class UserController extends Controller
     //show form
     public function show($id)
     {
-            $user = User::findOrFail($id);
-            $websites = Skillset::where('user_id', $user->id)
-                            ->latest('created_at')
-                            ->value('website');
+        $user = User::findOrFail($id);
 
-            $tools = Skillset::where('user_id', $user->id)
-                            ->latest('created_at')
-                            ->value('tool');
-
-            $skills = Skillset::where('user_id', $user->id)
-                            ->latest('created_at')
-                            ->value('skill');
-
-            $softskills = Skillset::where('user_id', $user->id)
-                            ->latest('created_at')
-                            ->value('softskill');
-
-            $positionsApplied = ApplicantInformation::where('user_id', $user->id)
-                            ->latest('created_at')
-                            ->value('positions');
-
-            $aWebsites = json_decode($websites);
-            $aTools = json_decode($tools);
-            $aSkills = json_decode($skills);
-            $aSoftskills = json_decode($softskills);
-            $aPositionsApplied = json_decode($positionsApplied);
-
-
-        return view('user.show', compact('user',
-                                        'aWebsites',
-                                        'aTools',
-                                        'aSkills',
-                                        'aSoftskills',
-                                        'aPositionsApplied',)
-                                        )->with('success', 'show here');
+        return view('user.view-profile', compact('user'));
 
     }
 
@@ -235,8 +203,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('user.edit', compact('user'))->with('success', 'edit here');;
+        $user = User::findOrFail($id);
+
+        return view('user.edit-profile', compact('user'));
     }
 
     /**
@@ -412,7 +381,7 @@ class UserController extends Controller
         return redirect()->route('user.show', $userId);
     }
 
-    public function editProfile()
+    public function editProfile($id)
     {
         return view('user.edit-profile');
     }

@@ -51,7 +51,7 @@
                                             <span class="pl-3 font-weight-bolder">Complete Profile</span>
                                         </div>
                                         <div class="col-4 text-right align-content-center">
-                                            <a href="{{ route('user.edit-profile') }}" class="text-muted"><span class="text-orange pl-3"> Proceed <i class="bi bi-arrow-right-circle"></i></span></a>
+                                            <a href="{{ route('user.edit', $user->id) }}" class="text-muted"><span class="text-orange pl-3"> Proceed <i class="bi bi-arrow-right-circle"></i></span></a>
                                         </div>
                                     </div>
                                     <hr>
