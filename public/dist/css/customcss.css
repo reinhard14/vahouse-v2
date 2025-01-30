@@ -51,7 +51,7 @@ input[type=number] {
     font-weight: 600;
 }
 
-.nav-item .nav-link.active {
+.nav-profile .nav-item .nav-link.active {
     color: #f26307 ;
     font-weight: 600;
     text-decoration: underline;

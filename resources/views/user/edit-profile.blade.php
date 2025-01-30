@@ -13,7 +13,7 @@
 
             <div class="row border-bottom mb-4">
                 <div class="col">
-                    <ul class="nav">
+                    <ul class="nav nav-profile">
                         <li class="nav-item">
                             <a class="nav-link active profile-edit-nav pr-5" href="#personal-details" data-toggle="tab">Personal Details </a>
                         </li>
