@@ -51,8 +51,17 @@ input[type=number] {
     font-weight: 600;
 }
 
+.orange-active.nav-item.menu-open > .nav-link {
+    background-color: #f26307 !important;
+    color: white !important;
+}
+
 .orange-active .nav-link.active {
     background-color: #f26307 !important;
+}
+
+.light-orange-active .nav-link.active {
+    background-color: #ffd4a3 !important;
 }
 
 .nav-profile .nav-item .nav-link.active {

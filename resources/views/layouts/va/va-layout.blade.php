@@ -98,7 +98,7 @@
                             <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-item {{ in_array(request()->segment(2), ['edit-profile', 'view-profile']) ? 'menu-open' : 'menu' }}">
+                        <li class="orange-active nav-item {{ in_array(request()->segment(2), ['edit-profile', 'view-profile']) ? 'menu-open' : 'menu' }}">
                             <a href="#" class="nav-link">
                                 <i class="bi bi-tools"></i>
                             <p>My Information
@@ -106,13 +106,13 @@
                             </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item" >
+                                <li class="nav-item light-orange-active" >
                                     <a href="{{ route('user.show', $user->id) }}" class="nav-link {{ request()->segment(2) === 'view-profile' ? 'active' : '' }}">
                                         <i class="bi bi-person-fill"></i>
                                         <p>View Profile</p>
                                     </a>
                                 </li>
-                                <li class="nav-item" >
+                                <li class="nav-item light-orange-active" >
                                     <a href="{{ route('user.edit', $user->id) }}" class="nav-link {{ request()->segment(2) === 'edit-profile' ? 'active' : '' }}">
                                         <i class="bi bi-person-fill"></i>
                                         <p>Edit Profile</p>
