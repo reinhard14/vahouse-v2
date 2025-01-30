@@ -51,6 +51,19 @@ input[type=number] {
     font-weight: 600;
 }
 
+.profile-header {
+    background: #cd5000;
+}
+
+img.overlap-image {
+    position: absolute;
+    top: -50px; /* Moves the image upwards */
+    left: 50%; /* Centers the image */
+    transform: translateX(-50%); /* Ensures precise centering */
+    z-index: 10; /* Ensures it appears above other elements */
+    border-radius: 50%;
+}
+
 .orange-active.nav-item.menu-open > .nav-link {
     background-color: #f26307 !important;
     color: white !important;
@@ -79,6 +92,16 @@ input[type=number] {
 
 .text-orange {
     color: var(--bs-orange);
+}
+
+.text-dark-orange {
+    color: #cd5000;
+}
+
+.btn.btn-orange-flat {
+    background-color: #f26307;
+    color: white;
+    border: none;
 }
 
 .btn.btn-login {
