@@ -26,15 +26,8 @@ class UserController extends Controller
     public function index()
     {
         $user = User::findOrFail(Auth::id());
-        // $userForm = UserFormCompletion::findOrFail('user_id', $user);
-        //Add the tools here
-        $toolsOptions = [
-            'Microsoft Office Suite', 'Google Workspace', 'Google Docs', 'Google Sheets', 'Google Slides',
-            'Google Drive', 'Gmail', 'Google Calendar', 'Outlook', 'Word', 'Excel', 'PowerPoint',
-            'Illustrator', 'InDesign', 'Trello', 'Asana', 'Monday.com', 'Slack', 'Zoom',
 
-        ];
-        return view('home', compact('user', 'toolsOptions'));
+        return view('user.dashboard', compact('user'));
     }
 
     /**
@@ -186,7 +179,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     //show form
-    public function show($id)
+    public function viewProfile($id)
     {
         $user = User::findOrFail($id);
 
@@ -201,7 +194,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editProfile($id)
     {
         $user = User::findOrFail($id);
 
