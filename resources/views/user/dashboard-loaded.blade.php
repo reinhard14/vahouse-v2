@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center mb-5">
-        <div class="col-md-10 mb-5 pb-5">
+        <div class="col-md-8 offset-md-1 mb-5 pb-5">
             <div class="row my-4">
                 <div class="col">
                     <h3>Dashboard</h3>

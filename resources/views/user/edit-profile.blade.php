@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 offset-md-1">
             <div class="row my-4">
                 <div class="col">
                     <h3>Edit Profile</h3>
