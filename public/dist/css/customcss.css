@@ -3,6 +3,15 @@
     overflow: auto;
 }
 
+.container-fluid {
+    background-color: #FAFAFA;
+}
+
+.container {
+    background-color: #FAFAFA;
+}
+
+
 .user-bg-color {
     background-color: rgba(0, 0, 0, 0.05);
 }
@@ -149,11 +158,13 @@ img.overlap-image {
     display: inline-flex;
     align-items: center;
 }
+
 .select2-selection__choice__remove {
     color: #ffd4a3;
     margin-right: 5px;
     cursor: pointer;
 }
+
 .select2-selection__choice__remove:hover {
     color: #ffd4a3;
 }

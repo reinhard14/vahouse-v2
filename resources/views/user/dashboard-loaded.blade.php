@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row justify-content-center mb-5 pb-5">
+<div class="container-fluid">
+    <div class="row justify-content-center mb-5">
         <div class="col-md-10 mb-5 pb-5">
             <div class="row my-4">
                 <div class="col">

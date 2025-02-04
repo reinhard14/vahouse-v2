@@ -11,7 +11,7 @@
             <img src="{{asset('dist/img/user_default.png')}}" alt="va-avatar" class="overlap-image">
         </div>
     </div>
-    <div class="row border-bottom justify-content-center text-center mt-5">
+    <div class="row border-bottom justify-content-center text-center pt-5" style="background-color: white;">
         <div class="col-md-10">
             <div class="row">
                 <div class="col-md-1 offset-md-11">
