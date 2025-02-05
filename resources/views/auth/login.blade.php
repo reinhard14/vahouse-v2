@@ -64,7 +64,7 @@
 
                                     <div class="row my-4">
                                         <div class="col text-center">
-                                            <a href="{{ route('register') }}" type="button" class="btn btn-orange form-control">
+                                            <a href="{{ route('register.personal') }}" type="button" class="btn btn-orange form-control">
                                                 {{ __('Apply as VA') }}
                                             </a>
                                         </div>

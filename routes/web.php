@@ -8,6 +8,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CaptchaController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegisterController;
 
 //! Public
 Auth::routes();
@@ -94,3 +95,5 @@ Route::get('captcha', [CaptchaController::class, 'getCaptcha'])->name('captcha.g
 Route::get('refresh-captcha', [CaptchaController::class, 'refreshCaptcha'])->name('refresh.captcha');
 
 Route::get('/storage/{id}', [AdminUserController::class, 'viewPDF'])->name('view.pdf');
+
+Route::get('/register-personal', [RegisterController::class, 'personalInformation'])->name('register.personal');
