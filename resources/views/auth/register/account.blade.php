@@ -38,7 +38,7 @@
 
                         <div class="row mb-2">
                             <div class="col">
-                                <label for="firstname">First Name <span class="text-danger">*</span> </label>
+                                <label for="firstname">Email <span class="text-danger">*</span> </label>
 
                                 <input id="firstname" type="email" class="form-control @error('email') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
 
@@ -52,7 +52,21 @@
 
                         <div class="row mb-2">
                             <div class="col">
-                                <label for="firstname">Middle Name <span class="text-danger">*</span> </label>
+                                <label for="firstname">Password <span class="text-danger">*</span> </label>
+
+                                <input id="firstname" type="email" class="form-control @error('email') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="firstname">Confirm Password <span class="text-danger">*</span> </label>
 
                                 <input id="firstname" type="email" class="form-control @error('email') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
 
@@ -65,44 +79,22 @@
                         </div>
 
                         <div class="row mb-2">
-                            <div class="col">
-                                <label for="firstname">Last Name <span class="text-danger">*</span> </label>
-
-                                <input id="firstname" type="email" class="form-control @error('email') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="col captcha text-center">
+                                <span id="captcha-img">{!! captcha_img() !!}</span>
                             </div>
-                        </div>
-
-                        <div class="row mb-2">
-                            <div class="col">
-                                <label for="firstname">Suffix Name <span class="text-danger">*</span> </label>
-
-                                <input id="firstname" type="email" class="form-control @error('email') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="col text-right">
+                                <a href="javascript:void(0)" onclick="refreshCaptcha()" class="bi bi-arrow-clockwise">Refresh</a>
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="col">
-                                <label>Gender </label>
+                                <label for="captcha">Enter Captcha here <span class="text-danger">*</span></label>
 
-                                <select name="gender" class="form-control">
-                                    <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }} >Male</option>
-                                    <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }} >Female</option>
-                                    <option value="Transgender" {{ old('gender') == 'Transgender' ? 'selected' : '' }} >Transgender</option>
-                                    <option value="Non binary" {{ old('gender') == 'Non binary' ? 'selected' : '' }} >Non-Binary/Non-Conforming</option>
-                                    <option value="Prefer not to respond" {{ old('gender') == 'Prefer not to respond' ? 'selected' : '' }} >Prefer not to respond</option>
-                                </select>
+                                <input type="text" id="captcha" name="captcha" class="form-control" required>
+                                @if ($errors->has('captcha'))
+                                    <span class="text-danger">{{ $errors->first('captcha') }}</span>
+                                @endif
                             </div>
                         </div>
 
@@ -128,24 +120,21 @@
 </div>
 
 <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function () {
-        // const guidelinesModal = new bootstrap.Modal(document.getElementById('guidelinesModal'));
-        // guidelinesModal.show();
 
-        function refreshCaptcha() {
-            $.ajax({
-                url: '{{ route('refresh.captcha') }}',
-                method: 'GET',
-                success: function(response) {
-                    $('#captcha-img').html(response.captcha);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Failed to refresh captcha:', xhr.responseText);
-                    alert('Failed to refresh captcha: ' + error);
-                }
-            });
-        }
-    });
+    function refreshCaptcha() {
+        $.ajax({
+            url: '{{ route('refresh.captcha') }}',
+            method: 'GET',
+            success: function(response) {
+                $('#captcha-img').html(response.captcha);
+            },
+            error: function(xhr, status, error) {
+                console.error('Failed to refresh captcha:', xhr.responseText);
+                alert('Failed to refresh captcha: ' + error);
+            }
+        });
+    }
+
 </script>
 
 @endsection
