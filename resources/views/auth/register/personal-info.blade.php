@@ -30,7 +30,7 @@
                         </div>
 
                         <h3>Create an Account</h3>
-                        <p class="text-muted">1 of 3: Personal Information</p>
+                        <p class="text-muted">1 of 2: Personal Information</p>
                     </div>
 
                     <form method="POST" action="{{ route('password.email') }}">

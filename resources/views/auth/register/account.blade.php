@@ -30,7 +30,7 @@
                         </div>
 
                         <h3>Create an Account</h3>
-                        <p class="text-muted">2 of 3: Account details</p>
+                        <p class="text-muted">2 of 2: Account details</p>
                     </div>
 
                     <form method="POST" action="{{ route('password.email') }}">
@@ -79,7 +79,7 @@
                         </div>
 
                         <div class="row mb-2">
-                            <div class="col captcha text-center">
+                            <div class="col-md-8 captcha text-right">
                                 <span id="captcha-img">{!! captcha_img() !!}</span>
                             </div>
                             <div class="col text-right">
