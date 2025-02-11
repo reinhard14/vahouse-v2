@@ -14,11 +14,11 @@ class RegisterController extends Controller
     }
 
     public function personalInformationPost(Request $request) {
+
         $request->validate([
             'name' => 'required',
             'middlename' => 'required',
             'lastname' => 'required',
-            'suffix' => 'required',
         ]);
 
         // Store in session
@@ -32,10 +32,20 @@ class RegisterController extends Controller
     }
 
     public function account() {
+        // Retrieve session data
+        // $data = Session::get('register_data');
+        // dd($data);
+
         return view('auth.register.account');
     }
 
     public function accountPost(Request $request) {
+
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+            'captcha' => ['required', 'captcha'],
+        ]);
 
         // Retrieve session data
         $data = Session::get('register_data');
@@ -47,6 +57,8 @@ class RegisterController extends Controller
             'lastname' => $data['lastname'],
             'suffix' => $data['suffix'],
             'gender' => $data['gender'],
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
         ]);
 
         // Clear session data

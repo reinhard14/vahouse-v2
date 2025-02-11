@@ -99,4 +99,5 @@ Route::get('/storage/{id}', [AdminUserController::class, 'viewPDF'])->name('view
 Route::get('/register-personal-information', [RegisterController::class, 'personalInformation'])->name('register.personal.information');
 Route::post('/register-personal-information', [RegisterController::class, 'personalInformationPost'])->name('register.info.post');
 Route::get('/register-account', [RegisterController::class, 'account'])->name('register.account');
+Route::post('/register-account', [RegisterController::class, 'accountPost'])->name('register.account.post');
 Route::get('/register-verification', [RegisterController::class, 'verify'])->name('register.verification');

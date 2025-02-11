@@ -33,14 +33,14 @@
                         <p class="text-muted">2 of 2: Account details</p>
                     </div>
 
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" action="{{ route('register.account.post') }}">
                         @csrf
 
                         <div class="row mb-2">
                             <div class="col">
-                                <label for="firstname">Email <span class="text-danger">*</span> </label>
+                                <label for="email">Email <span class="text-danger">*</span> </label>
 
-                                <input id="firstname" type="email" class="form-control @error('email') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -52,19 +52,19 @@
 
                         <div class="row mb-2">
                             <div class="col">
-                                <label for="firstname">Password <span class="text-danger">*</span> </label>
+                                <label for="password">Password <span class="text-danger">*</span> </label>
 
-                                <input id="firstname" type="email" class="form-control @error('email') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="password" autofocus>
 
-                                @error('email')
+                                @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="row mb-3">
+{{--
+                        <div class="row mb-5">
                             <div class="col">
                                 <label for="firstname">Confirm Password <span class="text-danger">*</span> </label>
 
@@ -76,7 +76,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row mb-2">
                             <div class="col-md-8 captcha text-right">
