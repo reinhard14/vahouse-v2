@@ -95,8 +95,11 @@ class RegisterController extends Controller
         // Clear session data
         Session::forget('register_data');
 
-        // Redirect to the intended page (dashboard or custom route)
-        // return redirect($this->redirectPath());
+        // Log the user in
+        Auth::login($user);
+
+        // Redirect user to intended page
+        return redirect(RouteServiceProvider::HOME);
 
     }
 
