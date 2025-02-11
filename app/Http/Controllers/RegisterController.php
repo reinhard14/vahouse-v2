@@ -3,12 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Register Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
+
+    use RegistersUsers;
+
+    /**
+     * Where to redirect users after registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+
     public function personalInformation() {
         return view('auth.register.personal-info');
     }
@@ -32,7 +56,7 @@ class RegisterController extends Controller
     }
 
     public function account() {
-        // Retrieve session data
+        // Retrieve session data, for debugging purposes on prior forms.
         // $data = Session::get('register_data');
         // dd($data);
 
@@ -48,7 +72,7 @@ class RegisterController extends Controller
         ]);
 
         // Retrieve session data
-        $data = Session::get('register_data');
+        $data = Session::get('register_data', []);
 
         // Create the user
         $user = User::create([
@@ -59,10 +83,21 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
+            'role_id' => $request->input('role_id'),
+            //this needed to be migrated tables.
+            'contactnumber' => 'n/a',
+            'age' => 'n/a',
+            'address' => 'n/a',
+            'education' => 'n/a',
+
         ]);
 
         // Clear session data
         Session::forget('register_data');
+
+        // Redirect to the intended page (dashboard or custom route)
+        // return redirect($this->redirectPath());
+
     }
 
 

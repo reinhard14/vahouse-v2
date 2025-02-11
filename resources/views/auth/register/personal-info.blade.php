@@ -82,7 +82,7 @@
                             <div class="col">
                                 <label for="suffix">Suffix Name </label>
 
-                                <input id="suffix" type="email" class="form-control @error('suffix') is-invalid @enderror" name="suffix" value="{{ old('suffix') }}" autocomplete="suffix" autofocus>
+                                <input id="suffix" type="text" class="form-control @error('suffix') is-invalid @enderror" name="suffix" value="{{ old('suffix') }}" autocomplete="suffix" autofocus>
 
                                 @error('suffix')
                                     <span class="invalid-feedback" role="alert">

@@ -35,6 +35,7 @@
 
                     <form method="POST" action="{{ route('register.account.post') }}">
                         @csrf
+                        <input type="hidden" name="role_id" value="3">
 
                         <div class="row mb-2">
                             <div class="col">
