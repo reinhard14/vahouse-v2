@@ -33,16 +33,16 @@
                         <p class="text-muted">1 of 2: Personal Information</p>
                     </div>
 
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" action="{{ route('register.personal.information') }}">
                         @csrf
 
                         <div class="row mb-2">
                             <div class="col">
-                                <label for="firstname">First Name <span class="text-danger">*</span> </label>
+                                <label for="name">First Name <span class="text-danger">*</span> </label>
 
-                                <input id="firstname" type="email" class="form-control @error('email') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                @error('email')
+                                @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -52,11 +52,11 @@
 
                         <div class="row mb-2">
                             <div class="col">
-                                <label for="firstname">Middle Name <span class="text-danger">*</span> </label>
+                                <label for="middlename">Middle Name <span class="text-danger">*</span> </label>
 
-                                <input id="firstname" type="email" class="form-control @error('email') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
+                                <input id="middlename" type="text" class="form-control @error('middlename') is-invalid @enderror" name="middlename" value="{{ old('middlename') }}" required autocomplete="middlename" autofocus>
 
-                                @error('email')
+                                @error('middlename')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -66,11 +66,11 @@
 
                         <div class="row mb-2">
                             <div class="col">
-                                <label for="firstname">Last Name <span class="text-danger">*</span> </label>
+                                <label for="lastname">Last Name <span class="text-danger">*</span> </label>
 
-                                <input id="firstname" type="email" class="form-control @error('email') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
+                                <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
 
-                                @error('email')
+                                @error('lastname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -80,11 +80,11 @@
 
                         <div class="row mb-2">
                             <div class="col">
-                                <label for="firstname">Suffix Name <span class="text-danger">*</span> </label>
+                                <label for="suffix">Suffix Name <span class="text-danger">*</span> </label>
 
-                                <input id="firstname" type="email" class="form-control @error('email') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
+                                <input id="suffix" type="email" class="form-control @error('suffix') is-invalid @enderror" name="suffix" value="{{ old('suffix') }}" required autocomplete="suffix" autofocus>
 
-                                @error('email')
+                                @error('suffix')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -94,7 +94,7 @@
 
                         <div class="row mb-5">
                             <div class="col">
-                                <label>Gender </label>
+                                <label for="gender">Gender </label>
 
                                 <select name="gender" class="form-control">
                                     <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }} >Male</option>

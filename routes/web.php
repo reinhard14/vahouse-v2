@@ -97,5 +97,6 @@ Route::get('refresh-captcha', [CaptchaController::class, 'refreshCaptcha'])->nam
 Route::get('/storage/{id}', [AdminUserController::class, 'viewPDF'])->name('view.pdf');
 
 Route::get('/register-personal-information', [RegisterController::class, 'personalInformation'])->name('register.personal.information');
+Route::post('/register-personal-information', [RegisterController::class, 'personalInformationPost'])->name('register.info.post');
 Route::get('/register-account', [RegisterController::class, 'account'])->name('register.account');
 Route::get('/register-verification', [RegisterController::class, 'verify'])->name('register.verification');
