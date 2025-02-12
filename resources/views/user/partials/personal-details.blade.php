@@ -6,9 +6,9 @@
 <div class="row mb-2">
     <div class="col-md-6">
         <div class="form-group">
-            <p>{{ __('First Name') }} <span class="text-danger">*</span> </p>
+            <label for="name" class="custom-label">{{ __('First Name') }} <span class="text-danger">*</span> </label>
 
-            <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
+            <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ $user->name ?? '' }}" required>
 
             @error('name')
                 <span class="invalid-feedback" role="alert">
@@ -20,9 +20,9 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <p>Middle Name:</p>
+            <label for="middlename" class="custom-label">Middle Name:</label>
 
-            <input type="text" id="middlename" name="middlename" class="form-control" value="{{ old('middlename') }}" required>
+            <input type="text" id="middlename" name="middlename" class="form-control" value="{{ $user->middlename ?? '' }}" required>
         </div>
     </div>
 </div>
@@ -30,9 +30,9 @@
 <div class="row mb-2">
     <div class="col-md-6">
         <div class="form-group">
-            <p>{{ __('Last name') }} <span class="text-danger">*</span></p>
+            <label for="lastname" class="custom-label">{{ __('Last name') }} <span class="text-danger">*</span></label>
 
-            <input id="lastname" type="text" name="lastname" class="form-control @error('lastname') is-invalid @enderror" value="{{ old('lastname') }}" required autocomplete="lastname">
+            <input id="lastname" type="text" name="lastname" class="form-control @error('lastname') is-invalid @enderror" value="{{ $user->lastname ?? '' }}" required>
 
             @error('lastname')
                 <span class="invalid-feedback" role="alert">
@@ -44,11 +44,11 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <p>Suffix </p>
+            <label for="suffix" class="custom-label">Suffix </label>
 
-            <input id="name" type="text" name="suffix" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
+            <input id="suffix" type="text" name="suffix" class="form-control @error('name') is-invalid @enderror" value="{{ $user->suffix ?? '' }}" required>
 
-            @error('name')
+            @error('suffix')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -61,7 +61,7 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <p>{{ __('Birthdate') }} <span class="text-danger">*</span></p>
+            <label for="birthdate" class="custom-label">{{ __('Birthdate') }} <span class="text-danger">*</span></label>
 
             <input id="birthdate" type="date" name="birthdate" class="form-control">
         </div>
@@ -69,14 +69,14 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <p>Gender </p>
+            <label for="gender" class="custom-label">Gender </label>
 
             <select name="gender" class="form-control">
-                <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }} >Male</option>
-                <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }} >Female</option>
-                <option value="Transgender" {{ old('gender') == 'Transgender' ? 'selected' : '' }} >Transgender</option>
-                <option value="Non binary" {{ old('gender') == 'Non binary' ? 'selected' : '' }} >Non-Binary/Non-Conforming</option>
-                <option value="Prefer not to respond" {{ old('gender') == 'Prefer not to respond' ? 'selected' : '' }} >Prefer not to respond</option>
+                <option value="Male" {{ old('gender', $user->gender ?? '') == 'Male' ? 'selected' : '' }}>Male</option>
+                <option value="Female" {{ old('gender', $user->gender ?? '') == 'Female' ? 'selected' : '' }} >Female</option>
+                <option value="Transgender" {{ old('gender', $user->gender ?? '') == 'Transgender' ? 'selected' : '' }} >Transgender</option>
+                <option value="Non binary" {{ old('gender', $user->gender ?? '') == 'Non binary' ? 'selected' : '' }} >Non-Binary/Non-Conforming</option>
+                <option value="Prefer not to respond" {{ old('gender', $user->gender ?? '') == 'Prefer not to respond' ? 'selected' : '' }} >Prefer not to respond</option>
             </select>
         </div>
     </div>
@@ -85,15 +85,15 @@
 <div class="row mb-3 border-bottom">
     <div class="col-md-6">
         <div class="form-group">
-            <p>Nationality <span class="text-danger">*</span></p>
+            <label for="nationality" class="custom-label">Nationality <span class="text-danger">*</span></label>
 
-            <input id="lastname" type="text" name="lastname" class="form-control">
+            <input id="nationality" type="text" name="nationality" class="form-control">
         </div>
     </div>
 
     <div class="col-md-6">
         <div class="form-group">
-            <p>Civil Status </p>
+            <label for="status" class="custom-label">Civil Status </label>
 
             <select name="status" class="form-control">
                 <option value="Single" {{ old('status') == 'Single' ? 'selected' : '' }} >Single</option>
@@ -115,17 +115,17 @@
 <div class="row mb-2">
     <div class="col-md-6">
         <div class="form-group">
-            <p>Mobile Number <span class="text-danger">*</span> </p>
+            <label for="contactnumber" class="custom-label">Mobile Number <span class="text-danger">*</span> </label>
 
-            <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
+            <input id="contactnumber" type="text" name="contactnumber" class="form-control" required>
         </div>
     </div>
 
     <div class="col-md-6">
         <div class="form-group">
-            <p>Email Address <span class="text-danger">*</span> </p>
+            <label for="email" class="custom-label">Email Address <span class="text-danger">*</span> </label>
 
-            <input type="text" id="middlename" name="middlename" class="form-control" value="{{ old('middlename') }}" required>
+            <input type="text" id="email" name="email" class="form-control" required>
         </div>
     </div>
 </div>
@@ -133,9 +133,9 @@
 <div class="row mb-3 border-bottom">
     <div class="col-md-6">
         <div class="form-group">
-            <p>Skype <span class="text-danger">*</span> </p>
+            <label for="skype" class="custom-label">Skype <span class="text-danger">*</span> </label>
 
-            <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
+            <input id="skype" type="text" name="skype" class="form-control @error('skype') is-invalid @enderror" value="{{ old('skype') }}" required>
             <small class="text-muted">Find your Skype ID next to "Skype Name". It's under the "Profile" header.</small>
         </div>
     </div>
@@ -150,7 +150,7 @@
 <div class="row mb-2">
     <div class="col-md-6">
         <div class="form-group">
-            <p>Parent/Guardian Name <span class="text-danger">*</span> </p>
+            <label class="custom-label">Parent/Guardian Name <span class="text-danger">*</span> </label>
 
             <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -164,7 +164,7 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <p>Contact Number <span class="text-danger">*</span> </p>
+            <label class="custom-label">Contact Number <span class="text-danger">*</span> </label>
 
             <input type="text" id="middlename" name="middlename" class="form-control" value="{{ old('middlename') }}" required>
         </div>
@@ -174,7 +174,7 @@
 <div class="row mb-3 border-bottom">
     <div class="col-md-6">
         <div class="form-group">
-            <p>Relationship <span class="text-danger">*</span> </p>
+            <label class="custom-label">Relationship <span class="text-danger">*</span> </label>
 
             <input type="text" id="middlename" name="middlename" class="form-control" value="{{ old('middlename') }}" required>
         </div>
@@ -190,17 +190,17 @@
 <div class="row mb-3 border-bottom">
     <div class="col-md-6">
         <div class="form-group">
-            <p>UnionBank Account Name <span class="text-danger">*</span> </p>
+            <label class="custom-label">UnionBank Account Name <span class="text-danger">*</span> </label>
 
-            <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
+            <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror" required>
         </div>
     </div>
 
     <div class="col-md-6">
         <div class="form-group">
-            <p>UnionBank Account Number <span class="text-danger">*</span> </p>
+            <label class="custom-label">UnionBank Account Number <span class="text-danger">*</span> </label>
 
-            <input type="text" id="middlename" name="middlename" class="form-control" value="{{ old('middlename') }}" required>
+            <input type="text" id="middlename" name="middlename" class="form-control" required>
         </div>
     </div>
 </div>
@@ -214,7 +214,7 @@
 <div class="row mb-3">
     <div class="col-md-6">
         <div class="form-group">
-            <p>Highest Education Attainment <span class="text-danger">*</span> </p>
+            <label class="custom-label">Highest Education Attainment <span class="text-danger">*</span> </label>
 
             <select name="education" class="form-control">
                 <option value="High School" {{ old('education') == 'High School' ? 'selected' : '' }} >High School</option>
@@ -231,7 +231,7 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <p>Degree <span class="text-danger">*</span> </p>
+            <label class="custom-label">Degree <span class="text-danger">*</span> </label>
 
             <input type="text" id="middlename" name="middlename" class="form-control" value="{{ old('middlename') }}" required>
         </div>
