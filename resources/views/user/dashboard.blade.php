@@ -31,7 +31,7 @@
                                             <span class="pl-3 font-weight-bolder">Sign up to a VA House Applicant System</span>
                                         </div>
                                         <div class="col-4 text-right align-content-center">
-                                            <a href="#" class="text-muted">Completed <i class="bi bi-arrow-right-circle"></i></a>
+                                            <a href="#" class="text-muted btn-link disabled">Completed <i class="bi bi-arrow-right-circle"></i></a>
                                         </div>
                                     </div>
                                     <hr>
@@ -41,7 +41,7 @@
                                             <span class="pl-3 font-weight-bolder">Email Verification</span>
                                         </div>
                                         <div class="col-4 text-right align-content-center">
-                                            <a href="#" class="text-muted">Completed <i class="bi bi-arrow-right-circle"></i></a>
+                                            <a href="#" class="text-muted btn-link disabled">Completed <i class="bi bi-arrow-right-circle"></i></a>
                                         </div>
                                     </div>
                                     <hr>
