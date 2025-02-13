@@ -97,14 +97,14 @@
 
         <div class="col-md-6">
             <div class="form-group">
-                <label for="status" class="custom-label">Civil Status </label>
+                <label for="civil_status" class="custom-label">Civil Status </label>
 
-                <select name="status" class="form-control">
-                    <option value="Single" {{ old('status') == 'Single' ? 'selected' : '' }} >Single</option>
-                    <option value="Married" {{ old('status') == 'Married' ? 'selected' : '' }} >Married</option>
-                    <option value="Widowed" {{ old('status') == 'Widowed' ? 'selected' : '' }} >Widowed</option>
-                    <option value="Separated" {{ old('status') == 'Separated' ? 'selected' : '' }} >Separated</option>
-                    <option value="Divorced" {{ old('status') == 'Divorced' ? 'selected' : '' }} >Divorced</option>
+                <select name="civil_status" class="form-control">
+                    <option value="Single" {{ old('status', $user->civil_status ?? '') == 'Single' ? 'selected' : '' }} >Single</option>
+                    <option value="Married" {{ old('status', $user->civil_status ?? '') == 'Married' ? 'selected' : '' }} >Married</option>
+                    <option value="Widowed" {{ old('status', $user->civil_status ?? '') == 'Widowed' ? 'selected' : '' }} >Widowed</option>
+                    <option value="Separated" {{ old('status', $user->civil_status ?? '') == 'Separated' ? 'selected' : '' }} >Separated</option>
+                    <option value="Divorced" {{ old('status', $user->civil_status ?? '') == 'Divorced' ? 'selected' : '' }} >Divorced</option>
                 </select>
             </div>
         </div>
@@ -215,14 +215,14 @@
                 <label for="education" class="custom-label">Highest Education Attainment <span class="text-danger">*</span> </label>
 
                 <select name="education" class="form-control">
-                    <option value="High School" {{ old('education') == 'High School' ? 'selected' : '' }} >High School</option>
-                    <option value="Senior High School" {{ old('education') == 'Senior High School' ? 'selected' : '' }} >Senior High School</option>
-                    <option value="College Undergrad" {{ old('education') == 'College Undergrad' ? 'selected' : '' }} >College Undergrad</option>
-                    <option value="College Degree" {{ old('education') == 'College Degree' ? 'selected' : '' }} >College Degree</option>
-                    <option value="Master's Degree" {{ old('education') == 'Master\'s Degree' ? 'selected' : '' }} >Master's Degree</option>
-                    <option value="Professional Degree" {{ old('education') == 'Professional Degree' ? 'selected' : '' }} >Professional Degree</option>
-                    <option value="Doctorate Degree" {{ old('education') == 'Doctorate Degree' ? 'selected' : '' }} >Doctorate Degree</option>
-                    <option value="Vocational" {{ old('education') == 'Vocational' ? 'selected' : '' }} >Vocational</option>
+                    <option value="High School" {{ old('education', $user->education ?? '') == 'High School' ? 'selected' : '' }} >High School</option>
+                    <option value="Senior High School" {{ old('education', $user->education ?? '') == 'Senior High School' ? 'selected' : '' }} >Senior High School</option>
+                    <option value="College Undergrad" {{ old('education', $user->education ?? '') == 'College Undergrad' ? 'selected' : '' }} >College Undergrad</option>
+                    <option value="College Degree" {{ old('education', $user->education ?? '') == 'College Degree' ? 'selected' : '' }} >College Degree</option>
+                    <option value="Master's Degree" {{ old('education', $user->education ?? '') == 'Master\'s Degree' ? 'selected' : '' }} >Master's Degree</option>
+                    <option value="Professional Degree" {{ old('education', $user->education ?? '') == 'Professional Degree' ? 'selected' : '' }} >Professional Degree</option>
+                    <option value="Doctorate Degree" {{ old('education', $user->education ?? '') == 'Doctorate Degree' ? 'selected' : '' }} >Doctorate Degree</option>
+                    <option value="Vocational" {{ old('education', $user->education ?? '') == 'Vocational' ? 'selected' : '' }} >Vocational</option>
                 </select>
             </div>
         </div>
