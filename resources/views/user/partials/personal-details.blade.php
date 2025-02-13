@@ -1,11 +1,11 @@
 <form action="{{ route('user.update-personal-details', $user->id) }}" method="POST">
     @csrf
-    <div class="row mb-4">
+    {{-- <div class="row mb-4">
         <div class="col">
             <label for="photo_id" class="custom-label">2x2 Formal Photo</label>
             <input type="file" id="photo_id" name="photo_id" class="form-control" accept=".jpeg, .jpg, .png" required>
         </div>
-    </div>
+    </div> --}}
 
     <div class="row mb-2">
         <div class="col-md-6">
@@ -151,7 +151,7 @@
         </div>
     </div>
 
-    <div class="row mb-2">
+    {{-- <div class="row mb-2">
         <div class="col-md-6">
             <div class="form-group">
                 <label for="emergency_person" class="custom-label">Parent/Guardian Name <span class="text-danger">*</span> </label>
@@ -177,7 +177,7 @@
                 <input type="text" id="emergency_relationship" name="emergency_relationship" class="form-control" value="" required>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="row mb-3">
         <div class="col">
@@ -185,7 +185,7 @@
         </div>
     </div>
 
-    <div class="row mb-3 border-bottom">
+    {{-- <div class="row mb-3 border-bottom">
         <div class="col-md-6">
             <div class="form-group">
                 <label for="ub_account" class="custom-label">UnionBank Account Name <span class="text-danger">*</span> </label>
@@ -201,7 +201,7 @@
                 <input type="text" id="ub_number" name="ub_number" class="form-control" required>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="row mb-3">
         <div class="col">
