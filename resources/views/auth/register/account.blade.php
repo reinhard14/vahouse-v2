@@ -41,7 +41,7 @@
                             <div class="col">
                                 <label for="email">Email <span class="text-danger">*</span> </label>
 
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
                             <div class="col">
                                 <label for="password">Password <span class="text-danger">*</span> </label>
 
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="password" autofocus>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" data-toggle="password" required>
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -64,20 +64,20 @@
                                 @enderror
                             </div>
                         </div>
-{{--
+
                         <div class="row mb-5">
                             <div class="col">
-                                <label for="firstname">Confirm Password <span class="text-danger">*</span> </label>
+                                <label for="current-password">Confirm Password <span class="text-danger">*</span> </label>
 
-                                <input id="firstname" type="email" class="form-control @error('email') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
+                                <input id="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" data-toggle="password" required>
 
-                                @error('email')
+                                @error('password_confirmation')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div> --}}
+                        </div>
 
                         <div class="row mb-2">
                             <div class="col-md-8 captcha text-right">

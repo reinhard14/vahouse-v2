@@ -67,7 +67,7 @@ class RegisterController extends Controller
 
         $request->validate([
             'email' => 'required',
-            'password' => 'required',
+            'password' => ['required', 'confirmed'],
             'captcha' => ['required', 'captcha'],
         ]);
 
