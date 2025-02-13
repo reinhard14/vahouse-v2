@@ -129,7 +129,7 @@
         </aside>
 
         <!-- Content -->
-        @include('includes.messages')
+        {{-- @include('includes.messages') --}}
 
         @yield('content')
         <!-- End Content -->

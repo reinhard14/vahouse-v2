@@ -235,6 +235,8 @@ class UserController extends Controller
         // $user->references->emergency_number = $request->input('emergency_number');
         // $user->references->emergency_relationship = $request->input('emergency_relationship');
 
+        $user->education = $request->input('education');
+        $user->degree = $request->input('degree');
         //Save table.
         $user->save();
 

@@ -36,7 +36,7 @@
             <div class="form-group">
                 <label for="lastname" class="custom-label">{{ __('Last name') }} <span class="text-danger">*</span></label>
 
-                <input id="lastname" type="text" name="lastname" class="form-control @error('lastname') is-invalid @enderror" value="{{ $user->lastname ?? '' }}" required>
+                <input id="lastname" type="text" name="lastname" class="form-control" value="{{ $user->lastname ?? '' }}" required>
 
                 @error('lastname')
                     <span class="invalid-feedback" role="alert">
@@ -50,7 +50,7 @@
             <div class="form-group">
                 <label for="suffix" class="custom-label">Suffix </label>
 
-                <input id="suffix" type="text" name="suffix" class="form-control @error('name') is-invalid @enderror" value="{{ $user->suffix ?? '' }}" required>
+                <input id="suffix" type="text" name="suffix" class="form-control @error('suffix') is-invalid @enderror" value="{{ $user->suffix ?? '' }}" required>
 
                 @error('suffix')
                     <span class="invalid-feedback" role="alert">
@@ -67,7 +67,7 @@
             <div class="form-group">
                 <label for="birthdate" class="custom-label">{{ __('Birthdate') }} <span class="text-danger">*</span></label>
 
-                <input id="birthdate" type="date" name="birthdate" class="form-control">
+                <input id="birthdate" type="date" name="birthdate" class="form-control" value="{{ $user->age }}">
             </div>
         </div>
 
@@ -91,7 +91,7 @@
             <div class="form-group">
                 <label for="nationality" class="custom-label">Nationality <span class="text-danger">*</span></label>
 
-                <input id="nationality" type="text" name="nationality" class="form-control">
+                <input id="nationality" type="text" name="nationality" class="form-control" value="{{ $user->nationality ?? '' }}">
             </div>
         </div>
 
@@ -139,7 +139,7 @@
             <div class="form-group">
                 <label for="skype" class="custom-label">Skype <span class="text-danger">*</span> </label>
 
-                <input id="skype" type="text" name="skype" class="form-control" value="{{ old('skype') }}" required>
+                <input id="skype" type="text" name="skype" class="form-control" required>
                 <small class="text-muted">Find your Skype ID next to "Skype Name". It's under the "Profile" header.</small>
             </div>
         </div>
@@ -231,7 +231,7 @@
             <div class="form-group">
                 <label for="degree" class="custom-label">Degree <span class="text-danger">*</span> </label>
 
-                <input type="text" id="degree" name="degree" class="form-control" value="" required>
+                <input type="text" id="degree" name="degree" class="form-control" value="{{ $user->degree ?? '' }}" required>
             </div>
         </div>
     </div>
