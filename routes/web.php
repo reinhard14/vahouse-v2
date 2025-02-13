@@ -81,6 +81,9 @@ Route::middleware('auth')
         Route::post('user/uploadMockcall', [UserController::class, 'uploadMockcall'])->name('user.mockcall');
         Route::post('user/references', [UserController::class, 'storeReferences'])->name('user.references.store');
         Route::delete('user/experiences/{id}', [UserController::class, 'destroyExperience'])->name('user.experienceDelete');
+        //REWRITE ROUTES VA USER END.
+        Route::post('user/edit-profile/{id}', [UserController::class, 'updatePersonalDetails'])->name('user.update-personal-details');
+
 });
 Route::middleware(['auth', 'check.user.id'])
     ->group(function () {

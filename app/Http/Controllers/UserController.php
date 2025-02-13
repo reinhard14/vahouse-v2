@@ -201,6 +201,45 @@ class UserController extends Controller
         return view('user.edit-profile', compact('user'));
     }
 
+    public function updatePersonalDetails(Request $request, $id)
+    {
+
+        $this->validate($request, [
+
+        ]);
+
+        $user = User::findOrFail($id);
+
+        $user->name = $request->input('name');
+        $user->middlename = $request->input('middlename');
+        $user->lastname = $request->input('lastname');
+        $user->suffix = $request->input('suffix');
+        $user->gender = $request->input('gender');
+        //Add Nationality, civil status (TABLE NON EXISTENT)
+        // $user->nationality = $request->input('nationality');
+        // $user->civil_status = $request->input('civil_status');
+
+        $user->contactnumber = $request->input('contactnumber');
+        $user->email = $request->input('email');
+        //update/create existing information -> BUT THIS TIME THE USER_INFORMATION IS NOT YET CREATED.
+        $user->information->skype = $request->input('skype');
+        $user->information->ub_account = $request->input('ub_account');
+        $user->information->ub_number = $request->input('ub_number');
+
+        //Emergency Contact Information
+        //update existing references -> BUT THIS TIME THE REFERENCES IS NOT YET CREATED.
+        $user->references->emergency_person = $request->input('emergency_person');
+        $user->references->emergency_number = $request->input('emergency_number');
+        $user->references->emergency_relationship = $request->input('emergency_relationship');
+
+        $user->age = $request->input('age');
+        $user->education = $request->input('education');
+        $user->address = $request->input('address');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+
+        return redirect()->route('user.edit-profile')->with('success', 'Information successfully updated!');
+    }
     /**
      * Update the specified resource in storage.
      *
