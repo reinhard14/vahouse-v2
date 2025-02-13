@@ -85,10 +85,10 @@ class RegisterController extends Controller
             'password' => bcrypt($request->input('password')),
             'role_id' => $request->input('role_id'),
             //this needed to be migrated tables.
-            'contactnumber' => 'n/a',
-            'age' => 'n/a',
-            'address' => 'n/a',
-            'education' => 'n/a',
+            'contactnumber' => '',
+            'age' => '',
+            'address' => '',
+            'education' => '',
 
         ]);
 

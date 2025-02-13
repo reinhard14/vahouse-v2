@@ -119,7 +119,7 @@
         <div class="form-group">
             <label for="contactnumber" class="custom-label">Mobile Number <span class="text-danger">*</span> </label>
 
-            <input id="contactnumber" type="text" name="contactnumber" class="form-control" required>
+            <input id="contactnumber" type="text" name="contactnumber" class="form-control" value="{{ $user->contactnumber ?? '' }}" required>
         </div>
     </div>
 
@@ -127,7 +127,7 @@
         <div class="form-group">
             <label for="email" class="custom-label">Email Address <span class="text-danger">*</span> </label>
 
-            <input type="text" id="email" name="email" class="form-control" required>
+            <input type="text" id="email" name="email" class="form-control" value="{{ $user->email ?? '' }}" required>
         </div>
     </div>
 </div>
