@@ -1,6 +1,8 @@
 <div class="row mb-4">
-    <p class="pl-3">2x2 Formal Photo</p>
-    <input type="file" id="photo_id" name="photo_id" class="form-control" accept=".jpeg, .jpg, .png" required>
+    <div class="col">
+        <label for="photo_id" class="custom-label">2x2 Formal Photo</label>
+        <input type="file" id="photo_id" name="photo_id" class="form-control" accept=".jpeg, .jpg, .png" required>
+    </div>
 </div>
 
 <div class="row mb-2">
@@ -235,5 +237,14 @@
 
             <input type="text" id="middlename" name="middlename" class="form-control" value="{{ old('middlename') }}" required>
         </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col">
+        <a href="{{ route('user.dashboard') }}" class="btn btn-secondary">Previous</a>
+    </div>
+    <div class="col text-right">
+        <button class="btn btn-orange-flat">Next Step</button>
     </div>
 </div>
