@@ -24,7 +24,7 @@
 
         <div class="col-md-6">
             <div class="form-group">
-                <label for="middlename" class="custom-label">Middle Name:</label>
+                <label for="middlename" class="custom-label">Middle Name: <span class="text-danger">*</span> </label>
 
                 <input type="text" id="middlename" name="middlename" class="form-control" value="{{ $user->middlename ?? '' }}" required>
             </div>
@@ -50,7 +50,7 @@
             <div class="form-group">
                 <label for="suffix" class="custom-label">Suffix </label>
 
-                <input id="suffix" type="text" name="suffix" class="form-control @error('suffix') is-invalid @enderror" value="{{ $user->suffix ?? '' }}" required>
+                <input id="suffix" type="text" name="suffix" class="form-control @error('suffix') is-invalid @enderror" value="{{ $user->suffix ?? '' }}">
 
                 @error('suffix')
                     <span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
 
         <div class="col-md-6">
             <div class="form-group">
-                <label for="gender" class="custom-label">Gender </label>
+                <label for="gender" class="custom-label">Gender <span class="text-danger">*</span></label>
 
                 <select name="gender" class="form-control">
                     <option value="Male" {{ old('gender', $user->gender ?? '') == 'Male' ? 'selected' : '' }}>Male</option>
@@ -97,7 +97,7 @@
 
         <div class="col-md-6">
             <div class="form-group">
-                <label for="civil_status" class="custom-label">Civil Status </label>
+                <label for="civil_status" class="custom-label">Civil Status <span class="text-danger">*</span></label>
 
                 <select name="civil_status" class="form-control">
                     <option value="Single" {{ old('status', $user->civil_status ?? '') == 'Single' ? 'selected' : '' }} >Single</option>
@@ -139,8 +139,16 @@
             <div class="form-group">
                 <label for="skype" class="custom-label">Skype <span class="text-danger">*</span> </label>
 
-                <input id="skype" type="text" name="skype" class="form-control" required>
+                <input id="skype" type="text" name="skype" class="form-control" value="{{ $user->information->skype ?? '' }}" required>
                 <small class="text-muted">Find your Skype ID next to "Skype Name". It's under the "Profile" header.</small>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="address" class="custom-label">Address <span class="text-danger">*</span> </label>
+
+                <input id="address" type="text" name="address" class="form-control" value="{{ $user->address ?? '' }}" required>
             </div>
         </div>
     </div>
@@ -151,12 +159,12 @@
         </div>
     </div>
 
-    {{-- <div class="row mb-2">
+    <div class="row mb-2">
         <div class="col-md-6">
             <div class="form-group">
                 <label for="emergency_person" class="custom-label">Parent/Guardian Name <span class="text-danger">*</span> </label>
 
-                <input type="text" id="emergency_person" name="emergency_person" class="form-control" value="" required>
+                <input type="text" id="emergency_person" name="emergency_person" class="form-control" value="{{ $user->references->emergency_person ?? '' }}" required>
             </div>
         </div>
 
@@ -164,7 +172,7 @@
             <div class="form-group">
                 <label for="emergency_number" class="custom-label">Contact Number <span class="text-danger">*</span> </label>
 
-                <input type="text" id="emergency_number" name="emergency_number" class="form-control" value="" required>
+                <input type="text" id="emergency_number" name="emergency_number" class="form-control" value="{{ $user->references->emergency_number ?? '' }}" required>
             </div>
         </div>
     </div>
@@ -174,10 +182,10 @@
             <div class="form-group">
                 <label for="emergency_relationship" class="custom-label">Relationship <span class="text-danger">*</span> </label>
 
-                <input type="text" id="emergency_relationship" name="emergency_relationship" class="form-control" value="" required>
+                <input type="text" id="emergency_relationship" name="emergency_relationship" class="form-control" value="{{ $user->references->emergency_relationship ?? '' }}" required>
             </div>
         </div>
-    </div> --}}
+    </div>
 
     <div class="row mb-3">
         <div class="col">
@@ -185,12 +193,12 @@
         </div>
     </div>
 
-    {{-- <div class="row mb-3 border-bottom">
+    <div class="row mb-3 border-bottom">
         <div class="col-md-6">
             <div class="form-group">
                 <label for="ub_account" class="custom-label">UnionBank Account Name <span class="text-danger">*</span> </label>
 
-                <input type="text" id="ub_account" name="ub_account" class="form-control" required>
+                <input type="text" id="ub_account" name="ub_account" class="form-control" value="{{ $user->information->ub_account ?? '' }}" required>
             </div>
         </div>
 
@@ -198,10 +206,10 @@
             <div class="form-group">
                 <label for="ub_number" class="custom-label">UnionBank Account Number <span class="text-danger">*</span> </label>
 
-                <input type="text" id="ub_number" name="ub_number" class="form-control" required>
+                <input type="text" id="ub_number" name="ub_number" class="form-control" value="{{ $user->information->ub_number ?? '' }}" required>
             </div>
         </div>
-    </div> --}}
+    </div>
 
     <div class="row mb-3">
         <div class="col">

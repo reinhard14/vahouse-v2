@@ -210,33 +210,47 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
+        // $user->information->photo_id = $request->input('photo_id');
+
         $user->name = $request->input('name');
         $user->middlename = $request->input('middlename');
         $user->lastname = $request->input('lastname');
         $user->suffix = $request->input('suffix');
+        $user->gender = $request->input('gender');
+        $user->contactnumber = $request->input('contactnumber');
+        $user->email = $request->input('email');
+        $user->address = $request->input('address');
         //BIRTHDATE WILL BE USED IN AGE NOW.
         $user->age = $request->input('birthdate');
-        $user->gender = $request->input('gender');
-        //Add Nationality, civil status (TABLE NON EXISTENT)
         //update:newly migrated table updated.
         $user->nationality = $request->input('nationality');
         $user->civil_status = $request->input('civil_status');
+        $user->education = $request->input('education');
+        $user->degree = $request->input('degree');
 
-        $user->contactnumber = $request->input('contactnumber');
-        $user->email = $request->input('email');
         //update/create existing information -> BUT THIS TIME THE USER_INFORMATION IS NOT YET CREATED.
-        // $user->information->skype = $request->input('skype');
-        // $user->information->ub_account = $request->input('ub_account');
-        // $user->information->ub_number = $request->input('ub_number');
+        $information = ApplicantInformation::updateOrCreate(
+            ['user_id' => $id],
+            [
+                'user_id' => $id,
+                'skype' => $request->input('skype'),
+                'ub_account' => $request->input('ub_account'),
+                'ub_number' => $request->input('ub_number')
+            ]
+        );
 
         //Emergency Contact Information
         //update existing references -> BUT THIS TIME THE REFERENCES IS NOT YET CREATED.
-        // $user->references->emergency_person = $request->input('emergency_person');
-        // $user->references->emergency_number = $request->input('emergency_number');
-        // $user->references->emergency_relationship = $request->input('emergency_relationship');
+        $references = Reference::updateOrCreate(
+            ['user_id' => $id],
+            [
+                'user_id' => $id,
+                'emergency_person' => $request->input('emergency_person'),
+                'emergency_number' => $request->input('emergency_number'),
+                'emergency_relationship' => $request->input('emergency_relationship')
+            ]
+        );
 
-        $user->education = $request->input('education');
-        $user->degree = $request->input('degree');
         //Save table.
         $user->save();
 
