@@ -160,6 +160,8 @@
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE -->
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
+<!-- AdminLTE -->
+<script src="{{ asset('dist/js/pages/global.js') }}"></script>
 
 <!-- OPTIONAL SCRIPTS -->
 <!-- Ion Icons -->
