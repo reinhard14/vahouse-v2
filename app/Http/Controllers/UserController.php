@@ -205,10 +205,40 @@ class UserController extends Controller
     {
 
         $this->validate($request, [
-
+            'name' => 'required',
+            'middlename' => 'required',
+            'lastname' => 'required',
+            // 'suffix' => 'required',
+            'gender' => 'required',
+            'contactnumber' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'birthdate' => 'required',
+            'nationality' => 'required',
+            'civil_status' => 'required',
+            'education' => 'required',
+            'degree' => 'required',
+            'skype' => 'required',
+            'ub_account' => 'required',
+            'ub_number' => 'required',
+            'emergency_person' => 'required',
+            'emergency_number' => 'required',
+            'emergency_relationship' => 'required',
+            //files
+            'photo_formal' => 'required|max:64000',
+        ],  [
+            'photo_formal.required' => 'Formal Photo file is missing.',
+            'photo_formal.mimes' => 'Formal Photo must be an image file.',
+            'photo_formal.max' => 'Formal photo file size exceed the 64 MB limit!',
         ]);
 
         $user = User::findOrFail($id);
+
+        if ($request->hasFile('photo_formal')) {
+            $formalPath = $request->file('photo_formal')->store('formals', 'public');
+        } else {
+            return back()->with('error', 'Please upload a file.');
+        }
 
         // $user->information->photo_id = $request->input('photo_id');
 
@@ -228,19 +258,21 @@ class UserController extends Controller
         $user->education = $request->input('education');
         $user->degree = $request->input('degree');
 
-        //update/create existing information -> BUT THIS TIME THE USER_INFORMATION IS NOT YET CREATED.
+        //update/create existing information.
         $information = ApplicantInformation::updateOrCreate(
             ['user_id' => $id],
             [
                 'user_id' => $id,
                 'skype' => $request->input('skype'),
                 'ub_account' => $request->input('ub_account'),
-                'ub_number' => $request->input('ub_number')
+                'ub_number' => $request->input('ub_number'),
+                'photo_formal' => $formalPath,
             ]
         );
+        // dd($formalPath);
 
         //Emergency Contact Information
-        //update existing references -> BUT THIS TIME THE REFERENCES IS NOT YET CREATED.
+        //update existing references.
         $references = Reference::updateOrCreate(
             ['user_id' => $id],
             [
@@ -251,7 +283,7 @@ class UserController extends Controller
             ]
         );
 
-        //Save table.
+        //Save to users table.
         $user->save();
 
         return redirect()->route('user.edit', $user->id)->with('success', 'Information successfully updated!');

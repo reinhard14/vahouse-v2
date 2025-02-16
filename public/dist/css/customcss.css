@@ -66,6 +66,9 @@ img.overlap-image {
     transform: translateX(-50%); /* Ensures precise centering */
     z-index: 10; /* Ensures it appears above other elements */
     border-radius: 50%;
+    object-fit: cover;
+    height: 225px;
+    width: 225px;
 }
 
 .orange-active.nav-item.menu-open > .nav-link {

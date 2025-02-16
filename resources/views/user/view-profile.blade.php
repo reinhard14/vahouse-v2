@@ -8,7 +8,11 @@
     </div>
     <div class="row border-bottom justify-content-center text-center">
         <div class="col-md-6">
-            <img src="{{asset('dist/img/user_default.png')}}" alt="va-avatar" class="overlap-image">
+            @if (!isset($user->information->photo_formal) || is_null($user->information->photo_formal))
+                <img src="{{ asset('dist/img/user_default.png') }}" alt="va-avatar" class="overlap-image">
+            @else
+                <img src="{{ asset('storage/' . $user->information->photo_formal) }}" alt="va-photo" class="overlap-image">
+            @endif
         </div>
     </div>
     <div class="row border-bottom justify-content-center text-center pt-5" style="background-color: white;">

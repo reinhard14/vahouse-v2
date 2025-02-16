@@ -1,11 +1,11 @@
-<form action="{{ route('user.update-personal-details', $user->id) }}" method="POST">
+<form action="{{ route('user.update-personal-details', $user->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
-    {{-- <div class="row mb-4">
+    <div class="row mb-4">
         <div class="col">
-            <label for="photo_id" class="custom-label">2x2 Formal Photo</label>
-            <input type="file" id="photo_id" name="photo_id" class="form-control" accept=".jpeg, .jpg, .png" required>
+            <label for="photo_formal" class="custom-label">2x2 Formal Photo</label>
+            <input type="file" id="photo_formal" name="photo_formal" class="form-control" accept=".jpeg, .jpg, .png" required>
         </div>
-    </div> --}}
+    </div>
 
     <div class="row mb-2">
         <div class="col-md-6">
@@ -67,7 +67,7 @@
             <div class="form-group">
                 <label for="birthdate" class="custom-label">{{ __('Birthdate') }} <span class="text-danger">*</span></label>
 
-                <input id="birthdate" type="date" name="birthdate" class="form-control" value="{{ $user->age }}">
+                <input id="birthdate" type="date" name="birthdate" class="form-control" value="{{ $user->age }}" required>
             </div>
         </div>
 
