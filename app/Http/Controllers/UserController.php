@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules\Password as RulesPassword;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -183,7 +184,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('user.view-profile', compact('user'));
+        $ageNow = Carbon::parse($user->age);
+        return view('user.view-profile', compact('user', 'ageNow'));
 
     }
 

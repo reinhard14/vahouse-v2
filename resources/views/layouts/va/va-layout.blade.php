@@ -107,15 +107,15 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item light-orange-active" >
-                                    <a href="{{ route('user.show', $user->id) }}" class="nav-link {{ request()->segment(2) === 'view-profile' ? 'active' : '' }}">
-                                        <i class="bi bi-person-fill"></i>
-                                        <p>View Profile</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item light-orange-active" >
                                     <a href="{{ route('user.edit', $user->id) }}" class="nav-link {{ request()->segment(2) === 'edit-profile' ? 'active' : '' }}">
                                         <i class="bi bi-person-fill"></i>
                                         <p>Edit Profile</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item light-orange-active" >
+                                    <a href="{{ route('user.show', $user->id) }}" class="nav-link {{ request()->segment(2) === 'view-profile' ? 'active' : '' }}">
+                                        <i class="bi bi-person-fill"></i>
+                                        <p>View Profile</p>
                                     </a>
                                 </li>
                             </ul>

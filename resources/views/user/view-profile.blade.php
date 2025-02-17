@@ -55,7 +55,7 @@
                         </div>
                         <div class="col text-muted">
                             <strong>
-                                Bachelor of Science in Information Technology
+                                {{ $user->degree }}
                             </strong>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                                 Profile Created
                             </small>
                             <small class="d-flex align-start">
-                                Janaury 01, 2025
+                                {{ $user->created_at->format('F d, Y') }}
                             </small>
                         </div>
                     </div>
@@ -171,17 +171,17 @@
 
                     <small class="text-muted">Age</small>
                     <p class="text-muted font-weight-bold">
-                        20
+                        {{ $ageNow->diffForHumans(null, true) ?? ''}}
                     </p>
 
                     <small class="text-muted">Gender</small>
                     <p class="text-muted font-weight-bold">
-                        {{ $user->gender ?? 'n/a' }}
+                        {{ $user->gender ?? '' }}
                     </p>
 
                     <small class="text-muted">Address</small>
                     <p class="text-muted font-weight-bold">
-                        440 Rizal St., Padada, Davao del Sur
+                        {{ $user->address ?? '' }}
                     </p>
 
                     <div class="row mb-3">
@@ -237,23 +237,23 @@
                     <span class="d-block text-muted font-weight-bold">
                         Skype
                     </span>
-                    <small class="text-muted">reinhardangcan</small>
+                    <small class="text-muted">{{ $user->information->skype ?? '' }}</small>
 
                     <span class="d-block text-muted font-weight-bold">
                         Email
                     </span>
-                    <small class="text-muted">dwc.fs.dummy@gmail.com</small>
+                    <small class="text-muted">{{ $user->email ?? '' }}</small>
 
                     <span class="d-block text-muted font-weight-bold">
                         Phone Number
                     </span>
-                    <small class="text-muted">09200930930</small>
+                    <small class="text-muted">{{ $user->contactnumber ?? '' }}</small>
 
                     <small class="d-block text-muted mt-4">Bank Account</small>
                     <span class="d-block text-muted font-weight-bold">
-                        UnionBank of the Philippines
+                        {{ $user->information->ub_account ?? '' }}
                     </span>
-                    <small class="text-muted">9900930930</small>
+                    <small class="text-muted">{{ $user->information->ub_number ?? '' }}</small>
                 </div>
             </div>
 
@@ -265,13 +265,13 @@
                         Incase of Emergency
                     </small>
                     <p class="text-muted font-weight-bold">
-                        Henry Sy
+                        {{ $user->references->emergency_person ?? '' }}
                     </p>
                     <small class="text-muted d-block font-weight-bold">
-                        Father
+                        {{ $user->references->emergency_relationship ?? '' }}
                     </small>
                     <small class="text-muted d-block font-weight-bold">
-                        09200920920
+                        {{ $user->references->emergency_number ?? '' }}
                     </small>
                 </div>
             </div>
