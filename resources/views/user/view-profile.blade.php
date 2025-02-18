@@ -24,7 +24,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <span class="d-block mt-5 pt-5"> {{ $user->name }} {{ $user->middlename }} {{ $user->lastname }} </span>
+                    <span class="d-block mt-5 pt-5">{{ $user->suffix }} {{ $user->name }} {{ $user->middlename }} {{ $user->lastname }} </span>
                     <span class="badge badge-pill badge-success span-normal-text">Active</span>
                     <h5> Quality Assurance, Web Developer </h5>
                     <span class="text-orange"><i class="bi bi-patch-check-fill"></i> </span> <small class=""> Tier 1 VA </small>
