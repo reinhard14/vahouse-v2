@@ -60,4 +60,14 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="{{ asset('dist/js/pages/user-end/edit-profile.js') }}"></script>
 
+<script>
+  $(document).ready(function () {
+    let activeTab = "{{ session('tab') }}";
+    if (activeTab) {
+      $('.nav-link[href="' + activeTab + '"]').tab('show');
+    }
+  });
+</script>
+
+
 @endsection

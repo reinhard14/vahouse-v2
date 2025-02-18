@@ -288,7 +288,8 @@ class UserController extends Controller
         //Save to users table.
         $user->save();
 
-        return redirect()->route('user.edit', $user->id)->with('success', 'Information successfully updated!');
+        return redirect()->route('user.edit', $user->id)->with('success', 'Information successfully updated!')
+                                                        ->with('tab', '#job-information');
     }
     /**
      * Update the specified resource in storage.
