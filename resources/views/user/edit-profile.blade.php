@@ -61,12 +61,13 @@
 <script src="{{ asset('dist/js/pages/user-end/edit-profile.js') }}"></script>
 
 <script>
-  $(document).ready(function () {
-    let activeTab = "{{ session('tab') }}";
-    if (activeTab) {
-      $('.nav-link[href="' + activeTab + '"]').tab('show');
-    }
-  });
+    $(document).ready(function () {
+        let activeTab = "{{ session('tab') }}";
+
+        if (activeTab) {
+            $('.nav-link[href="' + activeTab + '"]').tab('show');
+        }
+    });
 </script>
 
 
