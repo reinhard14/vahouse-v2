@@ -82,7 +82,8 @@ Route::middleware('auth')
         Route::post('user/references', [UserController::class, 'storeReferences'])->name('user.references.store');
         Route::delete('user/experiences/{id}', [UserController::class, 'destroyExperience'])->name('user.experienceDelete');
         //REWRITE ROUTES VA USER END.
-        Route::post('user/edit-profile/{id}', [UserController::class, 'updatePersonalDetails'])->name('user.update-personal-details');
+        Route::post('user/edit-profile/{id}/personal', [UserController::class, 'updatePersonalDetails'])->name('user.update-personal-details');
+        Route::post('user/edit-profile/{id}/job', [UserController::class, 'updateJobInformation'])->name('user.update-job-information');
 
 });
 Route::middleware(['auth', 'check.user.id'])

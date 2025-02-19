@@ -291,6 +291,55 @@ class UserController extends Controller
         return redirect()->route('user.edit', $user->id)->with('success', 'Personal details successfully updated!')
                                                         ->with('tab', '#job-information');
     }
+
+    public function updateJobInformation(Request $request, $id)
+    {
+
+        $this->validate($request, [
+            'positions' => 'required|array|min:1',
+            'positions.*' => 'string',
+            // 'work_status' => 'required',
+            // // 'days_available' => 'required',
+            // 'preferred_shift' => 'required',
+            // //user information
+            // 'rate' => 'required',
+            // // 'salary_negotiable' => 'required',
+            // // Job Profile
+            // 'skills' => 'required|array',
+            // 'skills.*' => 'string',
+            // 'softskills' => 'array',
+            // 'softskills.*' => 'string',
+            // 'tools' => 'required|array',
+            // 'tools.*' => 'string',
+        ]);
+
+        $user = User::findOrFail($id);
+
+        //update/create existing information.
+        $information = ApplicantInformation::updateOrCreate(
+            ['user_id' => $id],
+            [
+                'user_id' => $id,
+                'positions' => json_encode($request->input('positions')),
+                // 'positions' => $request->input('positions'),
+            ]
+        );
+
+        //Emergency Contact Information
+        //update existing references.
+        // $references = Reference::updateOrCreate(
+        //     ['user_id' => $id],
+        //     [
+        //         'user_id' => $id,
+        //         'emergency_person' => $request->input('emergency_person'),
+        //         'emergency_number' => $request->input('emergency_number'),
+        //         'emergency_relationship' => $request->input('emergency_relationship')
+        //     ]
+        // );
+
+        return redirect()->route('user.edit', $user->id)->with('success', 'Job Information successfully updated!')
+                                                        ->with('tab', '#file-uploads');
+    }
     /**
      * Update the specified resource in storage.
      *
