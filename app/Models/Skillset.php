@@ -15,6 +15,7 @@ class Skillset extends Model
         'tool',
         'skill',
         'softskill',
+        'user_id',
     ];
 
     public function user()

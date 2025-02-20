@@ -43,7 +43,7 @@
 
             <div class="row">
                 <div class="col">
-                    <input type="checkbox" id="position7" name="positions[]" class="formCheckInput" value="Tech VAs">
+                    <input type="checkbox" id="position7" name="positions[]" class="formCheckInput" value="Others">
                     <label for="position7" class="custom-label"> Others</label>
                 </div>
                 <div class="col">
@@ -63,19 +63,19 @@
         <div class="col my-4">
             <div class="row">
                 <div class="col">
-                    <input type="checkbox" id="position1" name="work_status[]" class="formCheckInput" value="General Virtual Assistant">
-                    <label for="position1" class="custom-label"> Part-Time</label>
+                    <input type="checkbox" id="parttime" name="work_status[]" class="formCheckInput" value="Part-Time">
+                    <label for="parttime" class="custom-label"> Part-Time</label>
                 </div>
                 <div class="col">
-                    <input type="checkbox" id="position2" name="work_status[]" class="formCheckInput" value="Social Media Manager">
-                    <label for="position2" class="custom-label"> Full-Time</label>
+                    <input type="checkbox" id="fulltime" name="work_status[]" class="formCheckInput" value="Full-Time">
+                    <label for="fulltime" class="custom-label"> Full-Time</label>
                 </div>
             </div>
 
             <div class="row" id="callersRow">
                 <div class="col">
-                    <input type="checkbox" id="position3" name="work_status[]" class="formCheckInput" value="Callers">
-                    <label for="position3" class="custom-label"> Negotiable</label>
+                    <input type="checkbox" id="negotiable" name="work_status[]" class="formCheckInput" value="Negotiable">
+                    <label for="negotiable" class="custom-label"> Negotiable</label>
                 </div>
             </div>
         </div>
@@ -104,16 +104,16 @@
             </div>
 
             <div class="row">
-                <label for="availability" class="custom-label">Preferred Time</label>
+                <label class="custom-label">Preferred Time</label>
                 <div class="input-group mb-3">
-                    <input type="time" class="form-control">
+                    <input type="time" name="preferred_start" class="form-control" required>
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="bi bi-arrow-right-short"></i></span>
                     </div>
-                    <input type="time" class="form-control">
-                    <div class="input-group-append">
+                    <input type="time" name="preferred_end" class="form-control" required>
+                    {{-- <div class="input-group-append">
                         <span class="input-group-text"><i class="bi bi-clock"></i></span>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -122,18 +122,18 @@
     <div class="row border-bottom mr-3">
         <div class="col mt-4">
             <h6>Salary</h6>
-            <p class="">
+            <label class="custom-label">
                 Choose how your Happy rate in Peso
-            </p>
+            </label>
         </div>
         <div class="col pt-3 my-4">
             <div class="row">
-                <input type="text" id="position1" name="salary" class="form-control">
+                <input type="text" id="position1" name="rate" class="form-control" value="{{ $user->information->rate ?? '' }}" required>
             </div>
 
             <div class="row mt-3">
                 <div class="col">
-                    <input type="checkbox" id="position3" name="salary[]" class="formCheckInput" value="Callers">
+                    <input type="checkbox" id="position3" name="negotiable" class="formCheckInput">
                     <label for="position3" class="custom-label">  Salary is negotiable? <span class="text-muted">(Check if yes)</span></label>
                 </div>
             </div>
@@ -161,16 +161,82 @@
                 Add your Technical skills to help attract your potential clients
             </p>
         </div>
+
+        @php
+            $applicantSkills = [];
+
+            if (isset($user->skillsets->skill) && !is_null($user->skillsets->skill)) {
+                $applicantSkills = json_decode($user->skillsets->skill, true);
+            }
+        @endphp
+
         <div class="col my-4">
             <div class="row mb-3">
-                <select id="skills" name="availability[]" class="select2" multiple>
-                    <option value="Monday">Monday</option>
-                    <option value="Tueday">Tueday</option>
-                    <option value="Wednesday">Wednesday</option>
-                    <option value="Thursday">Thursday</option>
-                    <option value="Friday">Friday</option>
-                    <option value="Saturday">Saturday</option>
-                    <option value="Sunday">Sunday</option>
+                <select id="skills" name="skills[]" class="select2" multiple>
+                    @if (!empty($applicantSkills) && is_array($applicantSkills))
+                        @foreach ($applicantSkills as $skill)
+                            <option value="{{ $skill }}" selected>{{ $skill }}</option>
+                        @endforeach
+
+                        <option value="Content Creation">Content Creation</option>
+                        <option value="Quality Control">Quality Control</option>
+                        <option value="Innovation and Trends">Innovation and Trends</option>
+                        <option value="Website Design and Development">Website Design and Development</option>
+                        <option value="Project Management">Project Management</option>
+                        <option value="Project Coordination">Project Coordination</option>
+                        <option value="Proficiency in accounting">Proficiency in accounting</option>
+                        <option value="Financial data entry and analysis">Financial data entry and analysis</option>
+                        <option value="Generate financial reports and statements">Generate financial reports and statements</option>
+                        <option value="Tax preparation and filing processes">Tax preparation and filing processes</option>
+                        <option value="Bookkeeping">Bookkeeping</option>
+                        <option value="Data entry">Data entry</option>
+                        <option value="Financial analysis">Financial analysis</option>
+                        <option value="Content creation and curation">Content creation and curation</option>
+                        <option value="Community engagement">Community engagement</option>
+                        <option value="Analytics and reporting">Analytics and reporting</option>
+                        <option value="Copywriting ">Copywriting </option>
+                        <option value="Graphic design">Graphic design</option>
+                        <option value="Customer service">Customer service</option>
+                        <option value="Social media management skills">Social media management skills</option>
+                        <option value="Basic accounting knowledge">Basic accounting knowledge</option>
+                        <option value="Order Processing">Order Processing</option>
+                        <option value="Inventory Management">Inventory Management</option>
+                        <option value="Product Research">Product Research</option>
+                        <option value="Administrative support">Administrative support</option>
+                        <option value="Multitasking-Research skills">Multitasking-Research skill</option>
+                        <option value="Data analysis ">Data analysis</option>
+                    @else
+                        {{-- @foreach ($skills as $skill)
+                            <option value="{{ $skill }}">{{ $skill }}</option>
+                        @endforeach --}}
+                        <option value="Content Creation">Content Creation</option>
+                        <option value="Quality Control">Quality Control</option>
+                        <option value="Innovation and Trends">Innovation and Trends</option>
+                        <option value="Website Design and Development">Website Design and Development</option>
+                        <option value="Project Management">Project Management</option>
+                        <option value="Project Coordination">Project Coordination</option>
+                        <option value="Proficiency in accounting">Proficiency in accounting</option>
+                        <option value="Financial data entry and analysis">Financial data entry and analysis</option>
+                        <option value="Generate financial reports and statements">Generate financial reports and statements</option>
+                        <option value="Tax preparation and filing processes">Tax preparation and filing processes</option>
+                        <option value="Bookkeeping">Bookkeeping</option>
+                        <option value="Data entry">Data entry</option>
+                        <option value="Financial analysis">Financial analysis</option>
+                        <option value="Content creation and curation">Content creation and curation</option>
+                        <option value="Community engagement">Community engagement</option>
+                        <option value="Analytics and reporting">Analytics and reporting</option>
+                        <option value="Copywriting ">Copywriting </option>
+                        <option value="Graphic design">Graphic design</option>
+                        <option value="Customer service">Customer service</option>
+                        <option value="Social media management skills">Social media management skills</option>
+                        <option value="Basic accounting knowledge">Basic accounting knowledge</option>
+                        <option value="Order Processing">Order Processing</option>
+                        <option value="Inventory Management">Inventory Management</option>
+                        <option value="Product Research">Product Research</option>
+                        <option value="Administrative support">Administrative support</option>
+                        <option value="Multitasking-Research skills">Multitasking-Research skill</option>
+                        <option value="Data analysis ">Data analysis</option>
+                    @endif
                 </select>
             </div>
         </div>

@@ -298,15 +298,15 @@ class UserController extends Controller
         $this->validate($request, [
             'positions' => 'required|array|min:1',
             'positions.*' => 'string',
-            // 'work_status' => 'required',
+            'work_status' => 'required',
             // // 'days_available' => 'required',
-            // 'preferred_shift' => 'required',
+            'preferred_shift' => 'required',
             // //user information
-            // 'rate' => 'required',
+            'rate' => 'required',
             // // 'salary_negotiable' => 'required',
             // // Job Profile
-            // 'skills' => 'required|array',
-            // 'skills.*' => 'string',
+            'skills' => 'required|array',
+            'skills.*' => 'string',
             // 'softskills' => 'array',
             // 'softskills.*' => 'string',
             // 'tools' => 'required|array',
@@ -321,21 +321,32 @@ class UserController extends Controller
             [
                 'user_id' => $id,
                 'positions' => json_encode($request->input('positions')),
-                // 'positions' => $request->input('positions'),
+                'rate' => $request->input('rate'),
             ]
         );
 
-        //Emergency Contact Information
         //update existing references.
-        // $references = Reference::updateOrCreate(
-        //     ['user_id' => $id],
-        //     [
-        //         'user_id' => $id,
-        //         'emergency_person' => $request->input('emergency_person'),
-        //         'emergency_number' => $request->input('emergency_number'),
-        //         'emergency_relationship' => $request->input('emergency_relationship')
-        //     ]
-        // );
+        $references = Reference::updateOrCreate(
+            ['user_id' => $id],
+            [
+                'user_id' => $id,
+                'work_status' => $request->input('work_status'),
+                'preferred_shift' => json_encode([
+                    'start' => $request->input('preferred_start','preferred_start'),
+                    'end' => $request->input('preferred_start','preferred_end'),
+                ]),
+            ]
+        );
+
+        //update existing skillset.
+        $skillsets = Skillset::updateOrCreate(
+            ['user_id' => $id],
+            [
+                'user_id' => $id,
+                'skill' => json_encode($request->input('skills')),
+            ]
+        );
+
 
         return redirect()->route('user.edit', $user->id)->with('success', 'Job Information successfully updated!')
                                                         ->with('tab', '#file-uploads');
