@@ -168,6 +168,9 @@
             if (isset($user->skillsets->skill) && !is_null($user->skillsets->skill)) {
                 $applicantSkills = json_decode($user->skillsets->skill, true);
             }
+
+            $availableSkills = array_diff($skills, $applicantSkills);
+
         @endphp
 
         <div class="col my-4">
@@ -178,64 +181,14 @@
                             <option value="{{ $skill }}" selected>{{ $skill }}</option>
                         @endforeach
 
-                        <option value="Content Creation">Content Creation</option>
-                        <option value="Quality Control">Quality Control</option>
-                        <option value="Innovation and Trends">Innovation and Trends</option>
-                        <option value="Website Design and Development">Website Design and Development</option>
-                        <option value="Project Management">Project Management</option>
-                        <option value="Project Coordination">Project Coordination</option>
-                        <option value="Proficiency in accounting">Proficiency in accounting</option>
-                        <option value="Financial data entry and analysis">Financial data entry and analysis</option>
-                        <option value="Generate financial reports and statements">Generate financial reports and statements</option>
-                        <option value="Tax preparation and filing processes">Tax preparation and filing processes</option>
-                        <option value="Bookkeeping">Bookkeeping</option>
-                        <option value="Data entry">Data entry</option>
-                        <option value="Financial analysis">Financial analysis</option>
-                        <option value="Content creation and curation">Content creation and curation</option>
-                        <option value="Community engagement">Community engagement</option>
-                        <option value="Analytics and reporting">Analytics and reporting</option>
-                        <option value="Copywriting ">Copywriting </option>
-                        <option value="Graphic design">Graphic design</option>
-                        <option value="Customer service">Customer service</option>
-                        <option value="Social media management skills">Social media management skills</option>
-                        <option value="Basic accounting knowledge">Basic accounting knowledge</option>
-                        <option value="Order Processing">Order Processing</option>
-                        <option value="Inventory Management">Inventory Management</option>
-                        <option value="Product Research">Product Research</option>
-                        <option value="Administrative support">Administrative support</option>
-                        <option value="Multitasking-Research skills">Multitasking-Research skill</option>
-                        <option value="Data analysis ">Data analysis</option>
+                        @foreach ($availableSkills as $skillOption)
+                            <option value="{{ $skillOption }}">{{ $skillOption }}</option>
+                        @endforeach
+
                     @else
-                        {{-- @foreach ($skills as $skill)
-                            <option value="{{ $skill }}">{{ $skill }}</option>
-                        @endforeach --}}
-                        <option value="Content Creation">Content Creation</option>
-                        <option value="Quality Control">Quality Control</option>
-                        <option value="Innovation and Trends">Innovation and Trends</option>
-                        <option value="Website Design and Development">Website Design and Development</option>
-                        <option value="Project Management">Project Management</option>
-                        <option value="Project Coordination">Project Coordination</option>
-                        <option value="Proficiency in accounting">Proficiency in accounting</option>
-                        <option value="Financial data entry and analysis">Financial data entry and analysis</option>
-                        <option value="Generate financial reports and statements">Generate financial reports and statements</option>
-                        <option value="Tax preparation and filing processes">Tax preparation and filing processes</option>
-                        <option value="Bookkeeping">Bookkeeping</option>
-                        <option value="Data entry">Data entry</option>
-                        <option value="Financial analysis">Financial analysis</option>
-                        <option value="Content creation and curation">Content creation and curation</option>
-                        <option value="Community engagement">Community engagement</option>
-                        <option value="Analytics and reporting">Analytics and reporting</option>
-                        <option value="Copywriting ">Copywriting </option>
-                        <option value="Graphic design">Graphic design</option>
-                        <option value="Customer service">Customer service</option>
-                        <option value="Social media management skills">Social media management skills</option>
-                        <option value="Basic accounting knowledge">Basic accounting knowledge</option>
-                        <option value="Order Processing">Order Processing</option>
-                        <option value="Inventory Management">Inventory Management</option>
-                        <option value="Product Research">Product Research</option>
-                        <option value="Administrative support">Administrative support</option>
-                        <option value="Multitasking-Research skills">Multitasking-Research skill</option>
-                        <option value="Data analysis ">Data analysis</option>
+                        @foreach ($skills as $skillOption)
+                            <option value="{{ $skillOption }}">{{ $skillOption }}</option>
+                        @endforeach
                     @endif
                 </select>
             </div>
