@@ -45,7 +45,7 @@
                             <span class="badge badge-pill medium-icon p-2"><i class="bi bi-briefcase"></i></span>
                         </div>
                         <div class="col text-muted">
-                            Looking for <strong> full-time, night shift work</strong> for <strong>40 hours</strong> per week. <strong>35,000</strong> Pesos monthly salary.
+                            Looking for <strong> {{ str_replace(['[', ']'], '', $user->references->work_status) }}</strong> for <strong>40 hours</strong> per week. <strong>{{ $user->information->rate }}</strong> Pesos monthly salary.
                         </div>
                     </div>
 
