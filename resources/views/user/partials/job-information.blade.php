@@ -149,7 +149,8 @@
         </div>
         <div class="col my-4">
             <div class="row">
-                <textarea class="form-control" placeholder="Please enter description here..."></textarea>
+                <textarea name="services_offered" class="form-control" placeholder="Please enter description here..."
+                        value="{{ $user->references->services_offered }}"></textarea>
             </div>
         </div>
     </div>

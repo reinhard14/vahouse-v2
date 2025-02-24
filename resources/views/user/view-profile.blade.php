@@ -81,7 +81,7 @@
                     <h5 class="text-muted mb-4">Profile Description</h5>
 
                     <p class="">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi doloribus odit nobis a, impedit laboriosam dignissimos deleniti quidem! Sit aliquid sapiente enim quidem. Fuga voluptatibus deserunt impedit vitae nostrum commodi hic quam, eum consequatur ullam!
+                        {{ $user->references->services_offered ?? ''}}
                     </p>
                 </div>
             </div>

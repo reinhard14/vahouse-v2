@@ -332,6 +332,8 @@ class UserController extends Controller
             // 'preferred_shift' => 'required',
             // //user information
             'rate' => 'required',
+            //use services_offered col for job description field.
+            'services_offered' => 'required',
             // // 'salary_negotiable' => 'required',
             // // Job Profile
             'skills' => 'required|array',
@@ -367,6 +369,7 @@ class UserController extends Controller
                     'start' => $request->input('preferred_start','preferred_start'),
                     'end' => $request->input('preferred_start','preferred_end'),
                 ]),
+                'services_offered' => $request->input('services_offered'),
             ]
         );
 
