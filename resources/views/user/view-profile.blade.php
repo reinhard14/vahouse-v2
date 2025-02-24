@@ -90,38 +90,44 @@
                 <div class="card-body">
                     <h5 class="text-muted">Technical Skills</h5>
 
+                    @php
+                        $skills = json_decode($user->skillsets->skill, true) ?? [];
+                        $otherSkills = json_decode($user->skillsets->softskill, true) ?? [];
+                        $tools = json_decode($user->skillsets->tool, true) ?? [];
+                    @endphp
+
                     <div class="mb-3">
-                        <span class="badge badge-pill badge span-orange">
-                            Web development
-                        </span>
-                        <span class="badge badge-pill badge span-orange">
-                            Web management
-                        </span>
+                        @forelse ($skills as $skill)
+                            <span class="badge badge-pill badge span-orange">
+                                {{ $skill }}
+                            </span>
+                        @empty
+                            No skills available.
+                        @endforelse
                     </div>
 
                     <h5 class="text-muted">Other Skills</h5>
 
                     <div class="mb-3">
-                        <span class="badge badge-pill badge span-orange">
-                            Communication Skills
-                        </span>
+                        @forelse ($otherSkills as $otherSkill)
+                            <span class="badge badge-pill badge span-orange">
+                                {{ $otherSkill }}
+                            </span>
+                        @empty
+                            No soft skills available.
+                        @endforelse
                     </div>
 
                     <h5 class="text-muted">Tools, Websites, and Apps Used</h5>
 
                     <div class="mb-3">
-                        <span class="badge badge-pill badge span-orange">
-                            VS Code
-                        </span>
-                        <span class="badge badge-pill badge span-orange">
-                            Github
-                        </span>
-                        <span class="badge badge-pill badge span-orange">
-                            WAMP Server
-                        </span>
-                        <span class="badge badge-pill badge span-orange">
-                            Postman
-                        </span>
+                        @forelse ($tools as $tool)
+                            <span class="badge badge-pill badge span-orange">
+                                {{ $tool }}
+                            </span>
+                        @empty
+                            No tools available.
+                        @endforelse
                     </div>
                 </div>
             </div>
