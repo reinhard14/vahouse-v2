@@ -69,18 +69,21 @@
         <div class="col my-4">
             <div class="row">
                 <div class="col">
-                    <input type="checkbox" id="parttime" name="work_status[]" class="formCheckInput" value="Part-Time">
+                    <input type="checkbox" id="parttime" name="work_status[]" class="formCheckInput" value="Part-Time"
+                        {{ in_array("Part-Time", $workstatusItemize) ? 'checked' : '' }} >
                     <label for="parttime" class="custom-label"> Part-Time</label>
                 </div>
                 <div class="col">
-                    <input type="checkbox" id="fulltime" name="work_status[]" class="formCheckInput" value="Full-Time">
+                    <input type="checkbox" id="fulltime" name="work_status[]" class="formCheckInput" value="Full-Time"
+                        {{ in_array("Full-Time", $workstatusItemize) ? 'checked' : '' }} >
                     <label for="fulltime" class="custom-label"> Full-Time</label>
                 </div>
             </div>
 
             <div class="row" id="callersRow">
                 <div class="col">
-                    <input type="checkbox" id="negotiable" name="work_status[]" class="formCheckInput" value="Negotiable">
+                    <input type="checkbox" id="negotiable" name="work_status[]" class="formCheckInput" value="Negotiable"
+                        {{ in_array("Negotiable", $workstatusItemize) ? 'checked' : '' }} >
                     <label for="negotiable" class="custom-label"> Negotiable</label>
                 </div>
             </div>

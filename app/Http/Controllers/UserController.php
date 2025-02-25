@@ -279,34 +279,33 @@ class UserController extends Controller
         ];
 
         //LOAD JOB INFORMATION
-        //! Information relationship
-        $userInformation = User::with('information')->find($id);
+        //! Eager load User Information, and Skillset relationships
+        $userInformation = User::with('information', 'skillsets', 'references')->find($id);
 
-        $positionsItemize = [];
-        if (!empty($userInformation->information->positions)) {
-            $positionsItemize = json_decode($user->information->positions, true);
+        // Decode JSON data
+        function decodeJsonArray($data) {
+            return isset($data) && !is_null($data) ? json_decode($data, true) : [];
         }
+        // $decodeSkillset = function ($data) {
+        //     return isset($data) && !is_null($data) ? json_decode($data, true) : [];
+        // };
 
-        //! Skillset relationship
-        $applicantSkills = [];
-        $applicantSoftSkills = [];
-        $applicantTools = [];
+        // Extract positions
+        $positionsItemize = decodeJsonArray($user->information->positions ?? null);
 
-        if (isset($user->skillsets->skill) && !is_null($user->skillsets->skill)) {
-            $applicantSkills = json_decode($user->skillsets->skill, true);
-        }
-        if (isset($user->skillsets->softskill) && !is_null($user->skillsets->softskill)) {
-            $applicantSoftSkills = json_decode($user->skillsets->softskill, true);
-        }
-        if (isset($user->skillsets->tool) && !is_null($user->skillsets->tool)) {
-            $applicantTools = json_decode($user->skillsets->tool, true);
-        }
+        // Extract references
+        $workstatusItemize = decodeJsonArray($user->references->work_status ?? null);
+
+        //skillsets extraction
+        $applicantSkills = decodeJsonArray($user->skillsets->skill ?? null);
+        $applicantSoftSkills = decodeJsonArray($user->skillsets->softskill ?? null);
+        $applicantTools = decodeJsonArray($user->skillsets->tool ?? null);
 
         $availableSkills = array_diff($skills, $applicantSkills);
         $availableSoftSkills = array_diff($softskills, $applicantSoftSkills);
         $availableTools = array_diff($tools, $applicantTools);
 
-        return view('user.edit-profile', compact('user', 'skills', 'softskills', 'tools', 'positionsItemize',
+        return view('user.edit-profile', compact('user', 'skills', 'softskills', 'tools', 'positionsItemize', 'workstatusItemize',
                     'applicantSkills', 'applicantSoftSkills', 'applicantTools', 'availableSkills', 'availableSoftSkills', 'availableTools'));
     }
 
@@ -407,7 +406,6 @@ class UserController extends Controller
             'positions.*' => 'string',
             'work_status' => 'required',
             // // 'days_available' => 'required',
-            //why validation doesn't work?
             'preferred_start' => 'required',
             'preferred_end' => 'required',
             // 'preferred_shift' => 'required',
