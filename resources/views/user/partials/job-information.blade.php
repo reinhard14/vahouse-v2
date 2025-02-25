@@ -53,7 +53,7 @@
                     <label for="position7" class="custom-label"> Others</label>
                 </div>
                 <div class="col">
-                    <input type="text" id="specify" name="" class="formCheckInput" placeholder="Type if any">
+                    <input type="text" id="specify" name="specify" class="formCheckInput" placeholder="Type if any">
                 </div>
             </div>
         </div>

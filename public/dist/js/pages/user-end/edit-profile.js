@@ -20,4 +20,7 @@ $(document).ready(function() {
         width: '100%',
     });
 
+    $('#position7').change(function () {
+        $('#specify').prop('disabled', !this.checked);
+    }).trigger('change');
 });
