@@ -227,7 +227,7 @@ class UserController extends Controller
         ];
 
         $softskills = [
-            '3D Modelling', 'Accounting', 'Amazon', 'Animation', 'Appointment Scheduling', 'Architecture', 'Article Writing',
+            '1soft', '3D Modelling', 'Accounting', 'Amazon', 'Animation', 'Appointment Scheduling', 'Architecture', 'Article Writing',
             'BigCommerce', 'Blogging', 'Bookkeeping',
             'Calendar Management' ,'Content Writing', 'Copywriting', 'Creative Writing', 'CRM (Customer Relationship Management)', 'Customer Service',
             'Data Entry', 'Dropshipping',
@@ -253,7 +253,7 @@ class UserController extends Controller
         ];
 
         $tools = [
-            '3D Modelling', 'Accounting', 'Amazon', 'Animation', 'Appointment Scheduling', 'Architecture', 'Article Writing',
+            '1tool', '3D Modelling', 'Accounting', 'Amazon', 'Animation', 'Appointment Scheduling', 'Architecture', 'Article Writing',
             'BigCommerce', 'Blogging', 'Bookkeeping',
             'Calendar Management' ,'Content Writing', 'Copywriting', 'Creative Writing', 'CRM (Customer Relationship Management)', 'Customer Service',
             'Data Entry', 'Dropshipping',
@@ -397,6 +397,7 @@ class UserController extends Controller
         ], [
             'preferred_start.required' => 'Please select start time for working hour shift.',
             'preferred_end.required' => 'Please select end time for work shift.',
+            'services_offered' => 'Please enter job description.',
         ]);
 
         $user = User::findOrFail($id);

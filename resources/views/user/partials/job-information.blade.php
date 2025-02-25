@@ -149,8 +149,8 @@
         </div>
         <div class="col my-4">
             <div class="row">
-                <textarea name="services_offered" class="form-control" placeholder="Please enter description here..."
-                        value="{{ $user->references->services_offered }}"></textarea>
+                <textarea name="services_offered" class="form-control" placeholder="Please enter description here..." required>{{ $user->references->services_offered ?? '' }}
+                </textarea>
             </div>
         </div>
     </div>
@@ -179,8 +179,8 @@
             }
 
             $availableSkills = array_diff($skills, $applicantSkills);
-            $availableSoftSkills = array_diff($skills, $applicantSoftSkills);
-            $availableTools = array_diff($skills, $applicantTools);
+            $availableSoftSkills = array_diff($softskills, $applicantSoftSkills);
+            $availableTools = array_diff($tools, $applicantTools);
 
         @endphp
 
@@ -215,20 +215,22 @@
         </div>
         <div class="col my-4">
             <div class="row mb-3">
-                @if (!empty($applicantSkills) && is_array($applicantSkills))
-                    @foreach ($applicantSkills as $skill)
-                        <option value="{{ $skill }}" selected>{{ $skill }}</option>
-                    @endforeach
+                <select id="softskills" name="softskills[]" class="select2" multiple>
+                    @if (!empty($applicantSoftSkills) && is_array($applicantSoftSkills))
+                        @foreach ($applicantSoftSkills as $softSkill)
+                            <option value="{{ $softSkill }}" selected>{{ $softSkill }}</option>
+                        @endforeach
 
-                    @foreach ($availableSkills as $skillOption)
-                        <option value="{{ $skillOption }}">{{ $skillOption }}</option>
-                    @endforeach
+                        @foreach ($availableSoftSkills as $softSkillOption)
+                            <option value="{{ $softSkillOption }}">{{ $softSkillOption }}</option>
+                        @endforeach
 
-                @else
-                    @foreach ($skills as $skillOption)
-                        <option value="{{ $skillOption }}">{{ $skillOption }}</option>
-                    @endforeach
-                @endif
+                    @else
+                        @foreach ($softskills as $softSkillOption)
+                            <option value="{{ $softSkillOption }}">{{ $softSkillOption }}</option>
+                        @endforeach
+                    @endif
+                </select>
             </div>
         </div>
     </div>
@@ -242,19 +244,19 @@
         </div>
         <div class="col my-4">
             <div class="row mb-3">
-                <select id="tools" name="availability[]" class="select2" multiple>
-                    @if (!empty($applicantSkills) && is_array($applicantSkills))
-                        @foreach ($applicantSkills as $skill)
-                            <option value="{{ $skill }}" selected>{{ $skill }}</option>
+                <select id="tools" name="tools[]" class="select2" multiple>
+                    @if (!empty($applicantTools) && is_array($applicantTools))
+                        @foreach ($applicantTools as $tool)
+                            <option value="{{ $tool }}" selected>{{ $tool }}</option>
                         @endforeach
 
-                        @foreach ($availableSkills as $skillOption)
-                            <option value="{{ $skillOption }}">{{ $skillOption }}</option>
+                        @foreach ($availableTools as $toolOption)
+                            <option value="{{ $toolOption }}">{{ $toolOption }}</option>
                         @endforeach
 
                     @else
-                        @foreach ($skills as $skillOption)
-                            <option value="{{ $skillOption }}">{{ $skillOption }}</option>
+                        @foreach ($tools as $toolOption)
+                            <option value="{{ $toolOption }}">{{ $toolOption }}</option>
                         @endforeach
                     @endif
                 </select>
