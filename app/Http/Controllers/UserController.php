@@ -226,7 +226,59 @@ class UserController extends Controller
             'YouTube Ads'
         ];
 
-        return view('user.edit-profile', compact('user', 'skills'));
+        $softskills = [
+            '3D Modelling', 'Accounting', 'Amazon', 'Animation', 'Appointment Scheduling', 'Architecture', 'Article Writing',
+            'BigCommerce', 'Blogging', 'Bookkeeping',
+            'Calendar Management' ,'Content Writing', 'Copywriting', 'Creative Writing', 'CRM (Customer Relationship Management)', 'Customer Service',
+            'Data Entry', 'Dropshipping',
+            'E-commerce', 'E-commerce SEO', 'Email Marketing', 'Engineering', 'Email Management', 'Executive Assistant',
+            'Facebook Ads',
+            'Game Development', 'Google Ads', 'Graphic Design',
+            'Human Resources', 'HTML & CSS',
+            'IT Support', 'Illustration', 'Instagram Ads', 'Interior Design',
+            'Java', 'JavaScript', 'Joomla',
+            'Lead Generation', 'Legal Services', 'LinkedIn Ads', 'Live Chat Support', 'Local SEO',
+            'Magento', 'Marketing', 'Music Production',
+            'On-Page SEO', 'Off-Page SEO',
+            'Photography', 'Pinterest Ads', 'Podcast Production', 'Print on Demand', 'Professional Email Writing', 'Project Management', 'PHP', 'Python',
+            'QA Testing', 'Quality Assurance', 'Quality Control',
+            'Recruitment',
+            'SEO', 'Sales', 'Shopify', 'Snapchat Ads', 'Social Media Content Creation', 'Social Media Management', 'Social Media Marketing', 'Software Development', 'Sound Design',
+            'Technical SEO', 'Technical Support', 'Technical Writing', 'TikTok Ads', 'Training', 'Transcription', 'Translation', 'Twitter Ads',
+            'UI/UX Design',
+            'Virtual Assistant', 'Videography', 'Video Editing', 'Voice Over',
+            'Web Design', 'Web Development', 'Website Management',
+            'WooCommerce',
+            'YouTube Ads'
+        ];
+
+        $tools = [
+            '3D Modelling', 'Accounting', 'Amazon', 'Animation', 'Appointment Scheduling', 'Architecture', 'Article Writing',
+            'BigCommerce', 'Blogging', 'Bookkeeping',
+            'Calendar Management' ,'Content Writing', 'Copywriting', 'Creative Writing', 'CRM (Customer Relationship Management)', 'Customer Service',
+            'Data Entry', 'Dropshipping',
+            'E-commerce', 'E-commerce SEO', 'Email Marketing', 'Engineering', 'Email Management', 'Executive Assistant',
+            'Facebook Ads',
+            'Game Development', 'Google Ads', 'Graphic Design',
+            'Human Resources', 'HTML & CSS',
+            'IT Support', 'Illustration', 'Instagram Ads', 'Interior Design',
+            'Java', 'JavaScript', 'Joomla',
+            'Lead Generation', 'Legal Services', 'LinkedIn Ads', 'Live Chat Support', 'Local SEO',
+            'Magento', 'Marketing', 'Music Production',
+            'On-Page SEO', 'Off-Page SEO',
+            'Photography', 'Pinterest Ads', 'Podcast Production', 'Print on Demand', 'Professional Email Writing', 'Project Management', 'PHP', 'Python',
+            'QA Testing', 'Quality Assurance', 'Quality Control',
+            'Recruitment',
+            'SEO', 'Sales', 'Shopify', 'Snapchat Ads', 'Social Media Content Creation', 'Social Media Management', 'Social Media Marketing', 'Software Development', 'Sound Design',
+            'Technical SEO', 'Technical Support', 'Technical Writing', 'TikTok Ads', 'Training', 'Transcription', 'Translation', 'Twitter Ads',
+            'UI/UX Design',
+            'Virtual Assistant', 'Videography', 'Video Editing', 'Voice Over',
+            'Web Design', 'Web Development', 'Website Management',
+            'WooCommerce',
+            'YouTube Ads'
+        ];
+
+        return view('user.edit-profile', compact('user', 'skills', 'softskills', 'tools'));
     }
 
     public function updatePersonalDetails(Request $request, $id)
@@ -379,6 +431,9 @@ class UserController extends Controller
             [
                 'user_id' => $id,
                 'skill' => json_encode($request->input('skills')),
+                'softskill' => json_encode($request->input('softskills')),
+                'tool' => json_encode($request->input('tools')),
+
             ]
         );
 

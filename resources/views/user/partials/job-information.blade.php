@@ -165,12 +165,22 @@
 
         @php
             $applicantSkills = [];
+            $applicantSoftSkills = [];
+            $applicantTools = [];
 
             if (isset($user->skillsets->skill) && !is_null($user->skillsets->skill)) {
                 $applicantSkills = json_decode($user->skillsets->skill, true);
             }
+            if (isset($user->skillsets->softskill) && !is_null($user->skillsets->softskill)) {
+                $applicantSoftSkills = json_decode($user->skillsets->softskill, true);
+            }
+            if (isset($user->skillsets->tool) && !is_null($user->skillsets->tool)) {
+                $applicantTools = json_decode($user->skillsets->tool, true);
+            }
 
             $availableSkills = array_diff($skills, $applicantSkills);
+            $availableSoftSkills = array_diff($skills, $applicantSoftSkills);
+            $availableTools = array_diff($skills, $applicantTools);
 
         @endphp
 
@@ -205,15 +215,20 @@
         </div>
         <div class="col my-4">
             <div class="row mb-3">
-                <select id="softskills" name="availability[]" class="select2" multiple>
-                    <option value="Monday">Monday</option>
-                    <option value="Tueday">Tueday</option>
-                    <option value="Wednesday">Wednesday</option>
-                    <option value="Thursday">Thursday</option>
-                    <option value="Friday">Friday</option>
-                    <option value="Saturday">Saturday</option>
-                    <option value="Sunday">Sunday</option>
-                </select>
+                @if (!empty($applicantSkills) && is_array($applicantSkills))
+                    @foreach ($applicantSkills as $skill)
+                        <option value="{{ $skill }}" selected>{{ $skill }}</option>
+                    @endforeach
+
+                    @foreach ($availableSkills as $skillOption)
+                        <option value="{{ $skillOption }}">{{ $skillOption }}</option>
+                    @endforeach
+
+                @else
+                    @foreach ($skills as $skillOption)
+                        <option value="{{ $skillOption }}">{{ $skillOption }}</option>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
@@ -228,13 +243,20 @@
         <div class="col my-4">
             <div class="row mb-3">
                 <select id="tools" name="availability[]" class="select2" multiple>
-                    <option value="Monday">Monday</option>
-                    <option value="Tueday">Tueday</option>
-                    <option value="Wednesday">Wednesday</option>
-                    <option value="Thursday">Thursday</option>
-                    <option value="Friday">Friday</option>
-                    <option value="Saturday">Saturday</option>
-                    <option value="Sunday">Sunday</option>
+                    @if (!empty($applicantSkills) && is_array($applicantSkills))
+                        @foreach ($applicantSkills as $skill)
+                            <option value="{{ $skill }}" selected>{{ $skill }}</option>
+                        @endforeach
+
+                        @foreach ($availableSkills as $skillOption)
+                            <option value="{{ $skillOption }}">{{ $skillOption }}</option>
+                        @endforeach
+
+                    @else
+                        @foreach ($skills as $skillOption)
+                            <option value="{{ $skillOption }}">{{ $skillOption }}</option>
+                        @endforeach
+                    @endif
                 </select>
             </div>
         </div>
