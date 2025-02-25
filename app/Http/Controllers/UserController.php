@@ -295,6 +295,7 @@ class UserController extends Controller
 
         // Extract references
         $workstatusItemize = decodeJsonArray($user->references->work_status ?? null);
+        $preferredShift = decodeJsonArray($user->references->preferred_shift ?? null);
 
         //skillsets extraction
         $applicantSkills = decodeJsonArray($user->skillsets->skill ?? null);
@@ -305,7 +306,7 @@ class UserController extends Controller
         $availableSoftSkills = array_diff($softskills, $applicantSoftSkills);
         $availableTools = array_diff($tools, $applicantTools);
 
-        return view('user.edit-profile', compact('user', 'skills', 'softskills', 'tools', 'positionsItemize', 'workstatusItemize',
+        return view('user.edit-profile', compact('user', 'skills', 'softskills', 'tools', 'positionsItemize', 'workstatusItemize', 'preferredShift',
                     'applicantSkills', 'applicantSoftSkills', 'applicantTools', 'availableSkills', 'availableSoftSkills', 'availableTools'));
     }
 

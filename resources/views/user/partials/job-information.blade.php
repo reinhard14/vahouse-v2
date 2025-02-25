@@ -113,13 +113,14 @@
             </div>
 
             <div class="row">
+
                 <label class="custom-label">Preferred Time</label>
                 <div class="input-group mb-3">
-                    <input type="time" name="preferred_start" class="form-control" required>
+                    <input type="time" name="preferred_start" class="form-control" value="{{ $preferredShift['start'] ?? '' }}" required>
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="bi bi-arrow-right-short"></i></span>
                     </div>
-                    <input type="time" name="preferred_end" class="form-control" required>
+                    <input type="time" name="preferred_end" class="form-control" value="{{ $preferredShift['end'] ?? '' }}" required>
                 </div>
             </div>
         </div>
