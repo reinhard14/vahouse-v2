@@ -10,33 +10,39 @@
         <div class="col mb-4">
             <div class="row">
                 <div class="col">
-                    <input type="checkbox" id="position1" name="positions[]" class="formCheckInput" value="General Virtual Assistant">
+                    <input type="checkbox" id="position1" name="positions[]" class="formCheckInput" value="General Virtual Assistant"
+                        {{ in_array("General Virtual Assistant", $positionsItemize) ? 'checked' : '' }} >
                     <label for="position1" class="custom-label"> General VA</label>
                 </div>
                 <div class="col">
-                    <input type="checkbox" id="position2" name="positions[]" class="formCheckInput" value="Social Media Manager">
+                    <input type="checkbox" id="position2" name="positions[]" class="formCheckInput" value="Social Media Manager"
+                        {{ in_array("Social Media Manager", $positionsItemize) ? 'checked' : '' }} >
                     <label for="position2" class="custom-label"> Social Media Manager</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <input type="checkbox" id="position3" name="positions[]" class="formCheckInput" value="Callers">
+                    <input type="checkbox" id="position3" name="positions[]" class="formCheckInput" value="Callers"
+                        {{ in_array("Callers", $positionsItemize) ? 'checked' : '' }} >
                     <label for="position3" class="custom-label"> Callers</label>
                 </div>
                 <div class="col">
-                    <input type="checkbox" id="position4" name="positions[]" class="formCheckInput" value="Web Developers">
+                    <input type="checkbox" id="position4" name="positions[]" class="formCheckInput" value="Web Developers"
+                        {{ in_array("Web Developers", $positionsItemize) ? 'checked' : '' }} >
                     <label for="position4" class="custom-label"> Web Developers</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <input type="checkbox" id="position5" name="positions[]" class="formCheckInput" value="Tech VAs">
+                    <input type="checkbox" id="position5" name="positions[]" class="formCheckInput" value="Tech VAs"
+                        {{ in_array("Tech VAs", $positionsItemize) ? 'checked' : '' }} >
                     <label for="position5" class="custom-label"> Tech VAs</label>
                 </div>
                 <div class="col">
-                    <input type="checkbox" id="position6" name="positions[]" class="formCheckInput" value="Project Manager">
+                    <input type="checkbox" id="position6" name="positions[]" class="formCheckInput" value="Project Manager"
+                        {{ in_array("Project Manager", $positionsItemize) ? 'checked' : '' }} >
                     <label for="position6" class="custom-label"> Project Manager</label>
                 </div>
             </div>
@@ -111,9 +117,6 @@
                         <span class="input-group-text"><i class="bi bi-arrow-right-short"></i></span>
                     </div>
                     <input type="time" name="preferred_end" class="form-control" required>
-                    {{-- <div class="input-group-append">
-                        <span class="input-group-text"><i class="bi bi-clock"></i></span>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -162,27 +165,6 @@
                 Add your Technical skills to help attract your potential clients
             </p>
         </div>
-
-        @php
-            $applicantSkills = [];
-            $applicantSoftSkills = [];
-            $applicantTools = [];
-
-            if (isset($user->skillsets->skill) && !is_null($user->skillsets->skill)) {
-                $applicantSkills = json_decode($user->skillsets->skill, true);
-            }
-            if (isset($user->skillsets->softskill) && !is_null($user->skillsets->softskill)) {
-                $applicantSoftSkills = json_decode($user->skillsets->softskill, true);
-            }
-            if (isset($user->skillsets->tool) && !is_null($user->skillsets->tool)) {
-                $applicantTools = json_decode($user->skillsets->tool, true);
-            }
-
-            $availableSkills = array_diff($skills, $applicantSkills);
-            $availableSoftSkills = array_diff($softskills, $applicantSoftSkills);
-            $availableTools = array_diff($tools, $applicantTools);
-
-        @endphp
 
         <div class="col my-4">
             <div class="row mb-3">

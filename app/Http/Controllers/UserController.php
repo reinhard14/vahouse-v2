@@ -278,7 +278,36 @@ class UserController extends Controller
             'YouTube Ads'
         ];
 
-        return view('user.edit-profile', compact('user', 'skills', 'softskills', 'tools'));
+        //LOAD JOB INFORMATION
+        //! Information relationship
+        $userInformation = User::with('information')->find($id);
+
+        $positionsItemize = [];
+        if (!empty($userInformation->information->positions)) {
+            $positionsItemize = json_decode($user->information->positions, true);
+        }
+
+        //! Skillset relationship
+        $applicantSkills = [];
+        $applicantSoftSkills = [];
+        $applicantTools = [];
+
+        if (isset($user->skillsets->skill) && !is_null($user->skillsets->skill)) {
+            $applicantSkills = json_decode($user->skillsets->skill, true);
+        }
+        if (isset($user->skillsets->softskill) && !is_null($user->skillsets->softskill)) {
+            $applicantSoftSkills = json_decode($user->skillsets->softskill, true);
+        }
+        if (isset($user->skillsets->tool) && !is_null($user->skillsets->tool)) {
+            $applicantTools = json_decode($user->skillsets->tool, true);
+        }
+
+        $availableSkills = array_diff($skills, $applicantSkills);
+        $availableSoftSkills = array_diff($softskills, $applicantSoftSkills);
+        $availableTools = array_diff($tools, $applicantTools);
+
+        return view('user.edit-profile', compact('user', 'skills', 'softskills', 'tools', 'positionsItemize',
+                    'applicantSkills', 'applicantSoftSkills', 'applicantTools', 'availableSkills', 'availableSoftSkills', 'availableTools'));
     }
 
     public function updatePersonalDetails(Request $request, $id)
