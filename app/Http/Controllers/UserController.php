@@ -310,7 +310,7 @@ class UserController extends Controller
         $availableSkills = array_diff($skills, $applicantSkills);
         $availableSoftSkills = array_diff($softskills, $applicantSoftSkills);
         $availableTools = array_diff($tools, $applicantTools);
-        $availableDays = array_diff($skills, $daysItemize);
+        $availableDays = array_diff($days, $daysItemize);
 
         return view('user.edit-profile', compact('user', 'skills', 'softskills', 'tools', 'positionsItemize', 'workstatusItemize', 'preferredShift',
                     'applicantSkills', 'applicantSoftSkills', 'applicantTools', 'availableSkills', 'availableSoftSkills', 'availableTools',
