@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Skillset;
 use App\Models\ApplicantInformation;
 use App\Models\CallSample;
+use App\Models\Employment;
 use App\Models\User;
 use App\Models\Experience;
 use App\Models\Reference;
@@ -524,35 +525,40 @@ class UserController extends Controller
     public function experiences(Request $request) {
 
         $this->validate($request, [
-            'title' => 'required',
-            'duration' => 'required',
+            'employment_type' => 'required',
+            'date_started' => 'required',
+            'date_ended' => 'required',
+            'job_position' => 'required',
+            'company_details' => 'required',
+            'job_details' => 'required',
             'user_id' => 'required',
         ], [
-            'title.required' => 'Job title is a required field.',
-            'duration.required' => 'Duration of work a is required field.',
+            'employment_type.required' => 'Employment type is a required.',
+            'date_started.required' => 'Start date type is required.',
+            'date_ended.required' => 'End date is required.',
+            'job_position.required' => 'Job position is required.',
+            'company_details.required' => 'Company details is required.',
+            'job_details.required' => 'Job details is required.',
         ]);
         // dd($request->all()); // This will output the request data and stop execution
         // \Log::info($request->all());
 
         //ajax showing
-        $exists = Experience::where('user_id', $request->input('user_id'))->exists();
 
-        $experience = new Experience();
-        $experience->title = $request->input('title');
-        $experience->duration = $request->input('duration');
-        $experience->user_id = $request->input('user_id');
-        $experience->save();
-
-        $attribute = ['user_id' => $request->input('user_id')];
-        $formCompletion = UserFormCompletion::firstOrNew($attribute);
-        $formCompletion->is_experience_completed = $request->input('is_experience_completed');
-        $formCompletion->save();
+        $employment = new Employment();
+        $employment->employment_type = $request->input('employment_type');
+        $employment->date_started = $request->input('date_started');
+        $employment->date_ended = $request->input('date_ended');
+        $employment->job_position = $request->input('job_position');
+        $employment->company_details = $request->input('company_details');
+        $employment->job_details = $request->input('job_details');
+        $employment->user_id = $request->input('user_id');
+        $employment->save();
 
         return response()->json([
             'success' => true,
-            'message' => 'Experience has been saved successfully!',
-            'experience' => $experience,
-            'exists' => $exists,
+            'message' => 'Employment details has been saved successfully!',
+            'employment' => $employment,
         ]);
     }
 

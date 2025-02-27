@@ -286,4 +286,4 @@
 </form>
 
 
-<x-applicant.details />
+<x-applicant.employment-details />
