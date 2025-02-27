@@ -6,7 +6,7 @@ $(document).ready(function() {
         $(this).tab('show');
     });
 
-    $('#availability').select2({
+    $('#days_available').select2({
         tags: true,
         tokenSeparators: [','],
         placeholder: '',

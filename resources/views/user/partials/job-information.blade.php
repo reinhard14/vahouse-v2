@@ -49,11 +49,12 @@
 
             <div class="row">
                 <div class="col">
-                    <input type="checkbox" id="position7" name="positions[]" class="formCheckInput" value="Others">
+                    <input type="checkbox" id="position7" name="positions[]" class="formCheckInput" value="Others"
+                        {{ in_array("Others", $positionsItemize) ? 'checked' : '' }} >
                     <label for="position7" class="custom-label"> Others</label>
                 </div>
                 <div class="col">
-                    <input type="text" id="specify" name="specify" class="formCheckInput" placeholder="Type if any">
+                    <input type="text" id="specify" name="specify" class="formCheckInput" placeholder="Type if any" value="{{ $user->information->specify ?? '' }}">
                 </div>
             </div>
         </div>
@@ -99,16 +100,23 @@
         </div>
         <div class="col my-4">
             <div class="row mb-3">
-                <label for="availability" class="custom-label">Days Availability</label>
+                <label for="days_available" class="custom-label">Days Availability</label>
 
-                <select id="availability" name="availability[]" class="select2" multiple>
-                    <option value="Monday">Monday</option>
-                    <option value="Tueday">Tueday</option>
-                    <option value="Wednesday">Wednesday</option>
-                    <option value="Thursday">Thursday</option>
-                    <option value="Friday">Friday</option>
-                    <option value="Saturday">Saturday</option>
-                    <option value="Sunday">Sunday</option>
+                <select id="days_available" name="days_available[]" class="select2" multiple>
+                    @if (!empty($daysItemize) && is_array($daysItemize))
+                            @foreach ($daysItemize as $day)
+                                <option value="{{ $day }}" selected>{{ $day }}</option>
+                            @endforeach
+
+                            @foreach ($availableDays as $dayOption)
+                                <option value="{{ $dayOption }}">{{ $dayOption }}</option>
+                            @endforeach
+
+                        @else
+                            @foreach ($days as $day)
+                                <option value="{{ $day }}">{{ $day }}</option>
+                            @endforeach
+                        @endif
                 </select>
             </div>
 
@@ -140,8 +148,9 @@
 
             <div class="row mt-3">
                 <div class="col">
-                    <input type="checkbox" id="position3" name="negotiable" class="formCheckInput">
-                    <label for="position3" class="custom-label">  Salary is negotiable? <span class="text-muted">(Check if yes)</span></label>
+                    <input type="checkbox" id="negotiable" name="negotiable" class="formCheckInput" value="yes"
+                        {{ ($user->information->negotiable==="yes") ? 'checked' : '' }} >
+                    <label for="negotiable" class="custom-label">  Salary is negotiable? <span class="text-muted">(Check if yes)</span></label>
                 </div>
             </div>
         </div>

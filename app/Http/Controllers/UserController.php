@@ -278,6 +278,10 @@ class UserController extends Controller
             'YouTube Ads'
         ];
 
+        $days = [
+            'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+        ];
+
         //LOAD JOB INFORMATION
         //! Eager load User Information, and Skillset relationships
         $userInformation = User::with('information', 'skillsets', 'references')->find($id);
@@ -292,6 +296,7 @@ class UserController extends Controller
 
         // Extract positions
         $positionsItemize = decodeJsonArray($user->information->positions ?? null);
+        $daysItemize = decodeJsonArray($user->information->days_available ?? null);
 
         // Extract references
         $workstatusItemize = decodeJsonArray($user->references->work_status ?? null);
@@ -305,9 +310,11 @@ class UserController extends Controller
         $availableSkills = array_diff($skills, $applicantSkills);
         $availableSoftSkills = array_diff($softskills, $applicantSoftSkills);
         $availableTools = array_diff($tools, $applicantTools);
+        $availableDays = array_diff($skills, $daysItemize);
 
         return view('user.edit-profile', compact('user', 'skills', 'softskills', 'tools', 'positionsItemize', 'workstatusItemize', 'preferredShift',
-                    'applicantSkills', 'applicantSoftSkills', 'applicantTools', 'availableSkills', 'availableSoftSkills', 'availableTools'));
+                    'applicantSkills', 'applicantSoftSkills', 'applicantTools', 'availableSkills', 'availableSoftSkills', 'availableTools',
+                    'availableDays', 'daysItemize', 'days'));
     }
 
     public function updatePersonalDetails(Request $request, $id)
@@ -412,6 +419,9 @@ class UserController extends Controller
             // 'preferred_shift' => 'required',
             // //user information
             'rate' => 'required',
+            'specify' => 'required_if:positions,Others|string',
+            'days_available' => 'required',
+            // 'negotiable' => 'sometimes',
             //use services_offered col for job description field.
             'services_offered' => 'required',
             // // 'salary_negotiable' => 'required',
@@ -437,6 +447,9 @@ class UserController extends Controller
                 'user_id' => $id,
                 'positions' => json_encode($request->input('positions')),
                 'rate' => $request->input('rate'),
+                'specify' => $request->input('specify'),
+                'days_available' => json_encode($request->input('days_available')),
+                'negotiable' => $request->input('negotiable'),
             ]
         );
 
