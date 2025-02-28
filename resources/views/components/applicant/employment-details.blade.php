@@ -9,7 +9,7 @@
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
-            <form>
+            <form id="experienceForm">
                 @csrf
                 <input type="hidden" id="user_id" name="user_id" value="{{ Auth::id(); }}">
 
@@ -17,16 +17,16 @@
                     <span>Employment Type</span>
                     <div class="row mb-2">
                         <div class="col">
-                            <input type="radio" id="employment_type" value="VA">
-                            <label for="employment_type" class="form-label custom-label">VA</label>
+                            <input type="radio" id="VA" name="employment_type" value="VA">
+                            <label for="VA" class="form-label custom-label">VA</label>
                         </div>
                         <div class="col">
-                            <input type="radio" id="employment_type" value="Corporate">
-                            <label for="employment_type" class="form-label custom-label">Corporate</label>
+                            <input type="radio" id="Corporate" name="employment_type" value="Corporate">
+                            <label for="Corporate" class="form-label custom-label">Corporate</label>
                         </div>
                         <div class="col">
-                            <input type="radio" id="employment_type" value="BPO">
-                            <label for="employment_type" class="form-label custom-label">BPO</label>
+                            <input type="radio" id="BPO" name="employment_type" value="BPO">
+                            <label for="BPO" class="form-label custom-label">BPO</label>
                         </div>
                     </div>
 

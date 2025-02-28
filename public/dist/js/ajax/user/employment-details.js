@@ -6,7 +6,7 @@ $(document).ready(function(){
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
         var formData = {
-            employment_type: $('#employment_type').val(),
+            employment_type: $('input[name="employment_type"]:checked').val(),
             date_started: $('#date_started').val(),
             date_ended: $('#date_ended').val(),
             job_position: $('#job_position').val(),
@@ -25,7 +25,6 @@ $(document).ready(function(){
 
                 handleExperienceFormSubmission();
                 $('#experienceForm')[0].reset();
-                $('#noExperiencePlaceholder').remove();
 
                 $('#create-details-modal').modal('hide');
             },
