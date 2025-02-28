@@ -136,35 +136,28 @@
                 <div class="card-body">
                     <h5 class="text-muted mb-3">Employment History</h5>
 
-                    <div class="card p-4">
-                        <small class="text-muted">
-                            January 01, 2020 - January 02, 2020
-                        </small>
-                        <h6 class="text-muted">
-                            Developer
-                        </h6>
-                        <p class="text-muted">
-                            Company Name, Company Place
-                        </p>
-                        <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat praesentium esse, quidem blanditiis autem rerum nostrum aliquid, quaerat architecto numquam distinctio adipisci veniam culpa sit sed reiciendis. Unde, alias nisi.
-                        </p>
-                    </div>
-
-                    <div class="card p-4">
-                        <small class="text-muted">
-                            February 01, 2021 - January 02, 2022
-                        </small>
-                        <h6 class="text-muted">
-                            Developer 2
-                        </h6>
-                        <p class="text-muted">
-                            Company Name, Company Place
-                        </p>
-                        <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat praesentium esse, quidem blanditiis autem rerum nostrum aliquid, quaerat architecto numquam distinctio adipisci veniam culpa sit sed reiciendis. Unde, alias nisi.
-                        </p>
-                    </div>
+                    @forelse ($user->employment as $employment)
+                        <div class="card p-4">
+                            <small class="text-muted">
+                                {{ $employment->date_started ?? 'na' }} - {{ $employment->date_ended ?? 'na' }}
+                            </small>
+                            <h6 class="text-muted">
+                                {{ $employment->job_position ?? 'na' }}
+                            </h6>
+                            <p class="text-muted">
+                                {{ $employment->company_details ?? 'na' }}
+                            </p>
+                            <p class="text-muted">
+                                {{ $employment->job_details ?? 'na' }}
+                            </p>
+                        </div>
+                    @empty
+                        <div class="card p-4">
+                            <h6 class="text-muted text-center">
+                                No Employment History added yet.
+                            </h6>
+                        </div>
+                    @endforelse
                 </div>
             </div>
 
