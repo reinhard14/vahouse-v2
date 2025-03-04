@@ -537,7 +537,7 @@ class UserController extends Controller
             'date_started.required' => 'Start date type is required.',
             'date_ended.required' => 'End date is required.',
             'job_position.required' => 'Job position is required.',
-            'company_details.required' => 'Company details is required.',
+            'company_details.required' => 'Company name and address is required.',
             'job_details.required' => 'Job details is required.',
         ]);
         // dd($request->all()); // This will output the request data and stop execution

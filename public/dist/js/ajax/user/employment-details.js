@@ -39,7 +39,7 @@ $(document).ready(function(){
 
                     formattedResponse = JSON.stringify(errorResponse);
 
-                    handleReferencesWithMissingField(formattedResponse);
+                    handleMissingFields(formattedResponse);
                 } catch (e) {
                     alert('Invalid JSON response: ' + jqXHR.responseText);
                 }

@@ -333,6 +333,30 @@ function handleReferencesWithMissingField(formattedResponse) {
         timer: 2000,
     });
 }
+
+function handleMissingFields(formattedResponse) {
+    let cleanBracketResponses = formattedResponse.replace(/^\[|\]$/g, '');
+    let newlineResponses = cleanBracketResponses.replace(/,\s*/g, ',\n');
+    let itemizeResponses = newlineResponses.split(',');
+
+    let errorMessages = itemizeResponses.map(message => `<li>${message.trim()}</li>`).join('');
+
+    Swal.fire({
+        icon: 'error',
+        title: 'Incomplete answers...',
+        html: `
+            <p><strong>'Please answer all of the question in the form.'</strong></p>
+            <p class="mt-4">
+                <ul class="text-left">
+                    ${errorMessages}
+                </ul>
+            </p>
+            `,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        timer: 5000,
+    });
+}
 //Administrator's actions for Applicant's prompt.
 function handleApplicantEditFormSubmission(form) {
 
