@@ -81,35 +81,7 @@
 <x-applicant.guidelines />
 
 <script>
-    $(document).ready(function() {
-        $('#photo_id').on('change', function() {
-            var formData = new FormData();
-            var file = $('#photo_id')[0].files[0];
-
-            if (!file) {
-                alert("Please select a file.");
-                return;
-            }
-
-            formData.append('photo_id', file);
-            formData.append('_token', '{{ csrf_token() }}');
-
-            $.ajax({
-                url: "{{ route('user.update-valid-id') }}", // Adjust route name as needed
-                type: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                beforeSend: function() {
-                    $('#uploadStatus').html('<p>Uploading...</p>');
-                },
-                success: function(response) {
-                    $('#uploadStatus').html('<p style="color:green;">' + response.message + '</p>');
-                },
-                error: function(xhr) {
-                    $('#uploadStatus').html('<p style="color:red;">Error: ' + xhr.responseText + '</p>');
-                }
-            });
-        });
-    });
+    var updateStatusRoute = '{{ route('user.update-valid-id') }}';
 </script>
+
+<script src="{{ asset('dist/js/pages/user-end/photo-id.js') }}"></script>
