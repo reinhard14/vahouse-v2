@@ -1,6 +1,6 @@
 <div class="row mb-4">
     <div class="col">
-        <form id="autoUploadForm" action="user.update-valid-id" method="POST" enctype="multipart/form-data">
+        <form id="autoUploadForm">
             @csrf
             <div class="row">
                 <div class="col">
