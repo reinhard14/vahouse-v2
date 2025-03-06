@@ -226,8 +226,10 @@
                     <div class="row mb-3">
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">Valid ID</span>
-                            <small class="font-weight-bold text-orange">
-                                AdilID.pdf
+                            <small>
+                                <a href="{{ route('view.file', $user->information->photo_id) }}" target="_blank"
+                                    class="font-weight-bold text-orange">Open
+                                </a>
                             </small>
                         </div>
                     </div>

@@ -100,6 +100,7 @@ Route::get('captcha', [CaptchaController::class, 'getCaptcha'])->name('captcha.g
 Route::get('refresh-captcha', [CaptchaController::class, 'refreshCaptcha'])->name('refresh.captcha');
 
 Route::get('/storage/{id}', [AdminUserController::class, 'viewPDF'])->name('view.pdf');
+Route::get('/storage/{id}', [UserController::class, 'viewFile'])->name('view.file');
 
 Route::get('/register-personal-information', [RegisterController::class, 'personalInformation'])->name('register.personal.information');
 Route::post('/register-personal-information', [RegisterController::class, 'personalInformationPost'])->name('register.info.post');

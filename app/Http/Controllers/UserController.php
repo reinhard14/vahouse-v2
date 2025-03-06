@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules\Password as RulesPassword;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -691,6 +692,22 @@ class UserController extends Controller
         $userId = Auth::id();
 
         return redirect()->route('user.show', $userId);
+    }
+
+    public function viewFile($filename)
+    {
+        // Check if the file exists
+        if (!Storage::disk('public')->exists($filename)) {
+            abort(404);
+        }
+
+        // Get the file's content
+        $fileContent = Storage::disk('public')->get($filename);
+
+        // Return the file's content as a response
+        return response($fileContent, 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
     }
 
 }
