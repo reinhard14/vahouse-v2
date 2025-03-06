@@ -84,6 +84,7 @@ Route::middleware('auth')
         //REWRITE ROUTES VA USER END.
         Route::post('user/edit-profile/{id}/personal', [UserController::class, 'updatePersonalDetails'])->name('user.update-personal-details');
         Route::post('user/edit-profile/{id}/job', [UserController::class, 'updateJobInformation'])->name('user.update-job-information');
+        Route::post('user/edit-profile/valid-id', [UserController::class, 'uploadValidId'])->name('user.update-valid-id');
 
 });
 Route::middleware(['auth', 'check.user.id'])

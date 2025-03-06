@@ -484,6 +484,37 @@ class UserController extends Controller
         return redirect()->route('user.edit', $user->id)->with('success', 'Job Information successfully updated!')
                                                         ->with('tab', '#file-uploads');
     }
+
+    public function uploadValidId(Request $request) {
+
+        $this->validate($request, [
+            'photo_id' => 'required|mimes:jpeg,png,jpg|max:64000',
+        ], [
+            'photo_id.required' => 'ID photo file is missing.',
+            'photo_id.mimes' => 'ID photo must be an image file.',
+            'photo_id.max' => 'ID photo file size exceed the 64 MB limit!',
+        ]);
+
+        if (!$request->hasFile('photo_id')) {
+            return back()->with('error', 'Please upload a file.');
+        }
+
+        $validIdPath = $request->file('photo_id')->store('IDs', 'public');
+
+        $user_id = Auth::id();
+
+        $validId = ApplicantInformation::updateOrCreate(
+            ['user_id' => $user_id],
+            ['photo_id' => $validIdPath]
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Valid ID has been uploaded!',
+            'validId' => $validId,
+        ]);
+
+    }
     /**
      * Update the specified resource in storage.
      *
