@@ -86,6 +86,14 @@ Route::middleware('auth')
         Route::post('user/edit-profile/{id}/job', [UserController::class, 'updateJobInformation'])->name('user.update-job-information');
         Route::post('user/edit-profile/valid-id', [UserController::class, 'uploadValidId'])->name('user.update-valid-id');
 
+        Route::post('user/edit-profile/cv', [UserController::class, 'uploadCv'])->name('user.update-cv');
+        Route::post('user/edit-profile/update-disc', [UserController::class, 'uploadValidId'])->name('user.update-disc');
+        Route::post('user/edit-profile/portfolio', [UserController::class, 'uploadValidId'])->name('user.update-portfolio');
+        Route::post('user/edit-profile/video', [UserController::class, 'uploadValidId'])->name('user.update-video');
+        Route::post('user/edit-profile/career-certifications', [UserController::class, 'uploadValidId'])->name('user.update-career-certifications');
+        Route::post('user/edit-profile/inbound', [UserController::class, 'uploadValidId'])->name('user.update-inbound');
+        Route::post('user/edit-profile/outbound', [UserController::class, 'uploadValidId'])->name('user.update-outbound');
+
 });
 Route::middleware(['auth', 'check.user.id'])
     ->group(function () {
