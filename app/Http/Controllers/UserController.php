@@ -526,23 +526,23 @@ class UserController extends Controller
             'resume.max' => 'Resume file size exceed the 32 MB limit!',
         ]);
 
-        if (!$request->hasFile('photo_id')) {
+        if (!$request->hasFile('resume')) {
             return back()->with('error', 'Please upload a file.');
         }
 
-        $validIdPath = $request->file('photo_id')->store('IDs', 'public');
+        $validResumePath = $request->file('resume')->store('pdfs', 'public');
 
         $user_id = Auth::id();
 
-        $validId = ApplicantInformation::updateOrCreate(
+        $validResume = ApplicantInformation::updateOrCreate(
             ['user_id' => $user_id],
-            ['photo_id' => $validIdPath]
+            ['resume' => $validResumePath]
         );
 
         return response()->json([
             'success' => true,
-            'message' => 'Valid ID has been uploaded!',
-            'validId' => $validId,
+            'message' => 'Valid resume/portfolio has been uploaded!',
+            'validResume' => $validResume,
         ]);
 
     }
