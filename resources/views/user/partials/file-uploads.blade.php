@@ -29,11 +29,11 @@
 <div class="row mb-4">
     <div class="col">
         <label for="">CV or Resume</label>
-        <input type="file" id="photo_id" name="photo_id" class="form-control file-upload"
+        <input type="file" id="resume" name="resume" class="form-control file-upload"
                 {{-- create routes for this --}}
-                data-upload-url="{{ route('user.update-valid-id') }}"
-                accept=".jpeg, .jpg, .png"
-                data-allowed-types="image/jpeg,image/png,image/gif"
+                data-upload-url="{{ route('user.update-resume') }}"
+                accept="application/pdf"
+                data-allowed-types="application/pdf"
                 required
         >
     </div>
@@ -45,7 +45,7 @@
         <input type="file" id="photo_id" name="photo_id" class="form-control file-upload"
                 {{-- create routes for this --}}
                 data-upload-url="{{ route('user.update-valid-id') }}"
-                accept=".jpeg, .jpg, .png"
+                accept="application/pdf"
                 data-allowed-types="application/pdf"
                 required
         >

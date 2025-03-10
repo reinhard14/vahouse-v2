@@ -517,14 +517,13 @@ class UserController extends Controller
 
     }
 
-    public function uploadCv(Request $request) {
+    public function uploadResume(Request $request) {
 
         $this->validate($request, [
-            'photo_id' => 'required|mimes:jpeg,png,jpg|max:64000',
+            'resume' => 'required|mimes:pdf|max:32000',
         ], [
-            'photo_id.required' => 'ID photo file is missing.',
-            'photo_id.mimes' => 'ID photo must be an image file.',
-            'photo_id.max' => 'ID photo file size exceed the 64 MB limit!',
+            'resume.required' => 'Resume file is missing.',
+            'resume.max' => 'Resume file size exceed the 32 MB limit!',
         ]);
 
         if (!$request->hasFile('photo_id')) {
