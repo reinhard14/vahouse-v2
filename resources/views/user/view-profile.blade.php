@@ -199,7 +199,9 @@
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">DISC</span>
                             <small class="font-weight-bold text-orange">
-                                Adil.pdf
+                                <a href="{{ route('view.file', $user->information->disc_results) }}" target="_blank"
+                                    class="font-weight-bold text-orange">Open
+                                </a>
                             </small>
                         </div>
                     </div>

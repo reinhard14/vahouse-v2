@@ -546,6 +546,36 @@ class UserController extends Controller
         ]);
 
     }
+
+    public function uploadDisc(Request $request) {
+
+        $this->validate($request, [
+            'disc_results' => 'required|mimes:pdf|max:32000',
+        ], [
+            'disc_results.required' => 'Disc result file is required.',
+            'disc_results.max' => 'Disc result file size exceed the 32 MB limit!',
+        ]);
+
+        if (!$request->hasFile('disc_results')) {
+            return back()->with('error', 'Please upload a file.');
+        }
+
+        $validDiscPath = $request->file('disc_results')->store('DISC_Results', 'public');
+
+        $user_id = Auth::id();
+
+        $validDisc = ApplicantInformation::updateOrCreate(
+            ['user_id' => $user_id],
+            ['disc_results' => $validDiscPath]
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Disc results has been uploaded!',
+            'validDisc' => $validDisc,
+        ]);
+
+    }
     /**
      * Update the specified resource in storage.
      *

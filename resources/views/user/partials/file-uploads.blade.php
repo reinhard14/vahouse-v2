@@ -30,7 +30,6 @@
     <div class="col">
         <label for="">CV or Resume</label>
         <input type="file" id="resume" name="resume" class="form-control file-upload"
-                {{-- create routes for this --}}
                 data-upload-url="{{ route('user.update-resume') }}"
                 accept="application/pdf"
                 data-allowed-types="application/pdf"
@@ -42,9 +41,8 @@
 <div class="row mb-4">
     <div class="col">
         <label for="">DISC Result</label>
-        <input type="file" id="photo_id" name="photo_id" class="form-control file-upload"
-                {{-- create routes for this --}}
-                data-upload-url="{{ route('user.update-valid-id') }}"
+        <input type="file" id="disc_results" name="disc_results" class="form-control file-upload"
+                data-upload-url="{{ route('user.update-disc') }}"
                 accept="application/pdf"
                 data-allowed-types="application/pdf"
                 required
