@@ -4,15 +4,15 @@ $(document).ready(function() {
         var formData = new FormData();
         var file = input[0].files[0];
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
-        var uploadUrl = input.data('upload-url'); // ✅ Get upload route dynamically
-        var allowedTypes = input.data('allowed-types'); // ✅ Get allowed MIME types
-        var maxSizeMB = parseFloat(input.data('max-size')); // ✅ Get max size in MB
+        var uploadUrl = input.data('upload-url');
+        var allowedTypes = input.data('allowed-types');
+        var maxSizeMB = parseFloat(input.data('max-size'));
 
         if (!allowedTypes) {
             alert("Missing allowed file types.");
             return;
         }
-        allowedTypes = allowedTypes.split(','); // ✅ Now safe to split
+        allowedTypes = allowedTypes.split(',');
 
         if (!file) {
             alert("Please select a file.");
@@ -20,24 +20,22 @@ $(document).ready(function() {
         }
 
         var fileType = file.type;
-        var fileSizeMB = file.size / 1024 / 1024; // ✅ Convert bytes to MB
+        var fileSizeMB = file.size / 1024 / 1024;
 
-        // ✅ Check if file type is allowed
         if (!allowedTypes.includes(fileType)) {
             alert("Invalid file type. Allowed: " + allowedTypes.join(", "));
-            input.val(''); // ❌ Reset input if invalid
+            input.val('');
             return;
         }
 
-        // ✅ Check file size limit
         if (fileSizeMB > maxSizeMB) {
             alert("File is too large! Max size: " + maxSizeMB + "MB");
-            input.val(''); // ❌ Reset input if too large
+            input.val('');
             return;
         }
 
         var formData = new FormData();
-        formData.append(input.attr('name'), file); // ✅ Use input name dynamically
+        formData.append(input.attr('name'), file);
 
         $.ajax({
             url: uploadUrl,

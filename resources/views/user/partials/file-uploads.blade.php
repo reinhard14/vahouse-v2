@@ -56,11 +56,10 @@
 <div class="row mb-4">
     <div class="col">
         <label for="">Portfolio</label>
-        <input type="file" id="photo_id" name="photo_id" class="form-control file-upload"
-                {{-- create routes for this --}}
-                data-upload-url="{{ route('user.update-valid-id') }}"
-                accept=".jpeg, .jpg, .png"
-                data-allowed-types="image/jpeg,image/png,image/gif,application/pdf"
+        <input type="file" id="portfolio" name="portfolio" class="form-control file-upload"
+                data-upload-url="{{ route('user.update-portfolio') }}"
+                accept="application/pdf"
+                data-allowed-types="application/pdf"
                 required
         >
     </div>
@@ -70,8 +69,7 @@
     <div class="col">
         <label for="">Video Introduction</label>
         <input type="file" id="photo_id" name="photo_id" class="form-control file-upload"
-                {{-- create routes for this --}}
-                data-upload-url="{{ route('user.update-valid-id') }}"
+                data-upload-url="{{ route('user.update-video') }}"
                 accept=".jpeg, .jpg, .png"
                 data-allowed-types="video/mp4,video/mpeg,video/quicktime"
                 required
@@ -129,4 +127,4 @@
     var updateStatusRoute = '{{ route('user.update-valid-id') }}';
 </script> --}}
 
-<script src="{{ asset('dist/js/pages/user-end/photo-id.js') }}"></script>
+<script src="{{ asset('dist/js/pages/user-end/file-upload.js') }}"></script>

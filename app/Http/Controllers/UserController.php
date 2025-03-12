@@ -547,6 +547,36 @@ class UserController extends Controller
 
     }
 
+    public function uploadPortfolio(Request $request) {
+
+        $this->validate($request, [
+            'portfolio' => 'required|mimes:pdf|max:32000',
+        ], [
+            'portfolio.required' => 'Resume file is missing.',
+            'portfolio.max' => 'Resume file size exceed the 32 MB limit!',
+        ]);
+
+        if (!$request->hasFile('portfolio')) {
+            return back()->with('error', 'Please upload a file.');
+        }
+
+        $validPortfolioPath = $request->file('portfolio')->store('portfolios', 'public');
+
+        $user_id = Auth::id();
+
+        $validPortfolio = ApplicantInformation::updateOrCreate(
+            ['user_id' => $user_id],
+            ['portfolio' => $validPortfolioPath]
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Valid resume/portfolio has been uploaded!',
+            'validPortfolio' => $validPortfolio,
+        ]);
+
+    }
+
     public function uploadDisc(Request $request) {
 
         $this->validate($request, [
