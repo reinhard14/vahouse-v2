@@ -1,3 +1,21 @@
+<div class="row">
+    <div class="col">
+
+    <!-- Progress Bar -->
+    <div id="upload-progress">
+        <div id="upload-progress-text">
+            <div id="progress-bar">0%</div>
+        </div>
+    </div>
+
+    <!-- Spinner -->
+    <div id="loading-spinner">
+        <p>Uploading... <span class="spinner-border text-primary"></span></p>
+    </div>
+
+    </div>
+</div>
+
 <div class="row mb-4">
     <div class="col">
         <form id="autoUploadForm">
@@ -66,6 +84,7 @@
 </div>
 
 <div class="row mb-4">
+
     <div class="col">
         <label for="">Video Introduction</label>
         <input type="file" id="videolink" name="videolink" class="form-control file-upload"

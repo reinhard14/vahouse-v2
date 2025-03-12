@@ -166,3 +166,27 @@ img.overlap-image {
 .select2-selection__choice__remove:hover {
     color: #ffd4a3;
 }
+
+#progress-bar {
+    width: 0%;
+    height: 20px;
+    background: #f26307;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+
+#loading-spinner {
+    display: none;
+    text-align: center;
+}
+
+#upload-progress {
+    display: none;
+}
+
+#upload-progress-text {
+    width: 100%;
+    background: #f3f3f3;
+    border-radius: 5px;
+}

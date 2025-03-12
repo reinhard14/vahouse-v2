@@ -34,8 +34,11 @@ $(document).ready(function() {
             return;
         }
 
-        var formData = new FormData();
         formData.append(input.attr('name'), file);
+
+        // Show progress bar & spinner
+        $('#upload-progress').show();
+        $('#loading-spinner').show();
 
         $.ajax({
             url: uploadUrl,
@@ -47,10 +50,22 @@ $(document).ready(function() {
                 'X-CSRF-TOKEN': csrfToken
             },
 
+            xhr: function() {
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.onprogress = function(event) {
+                    if (event.lengthComputable) {
+                        var percentComplete = Math.round((event.loaded / event.total) * 100);
+                        $('#progress-bar').css('width', percentComplete + '%').text(percentComplete + '%');
+                    }
+                };
+                return xhr;
+            },
+
             success: function(response) {
 
                 handleFileFormSubmission(response);
-
+                $('#upload-progress').hide();
+                $('#loading-spinner').hide();
             },
             error: function(jqXHR) {
                 try {
@@ -64,6 +79,9 @@ $(document).ready(function() {
                 } catch (e) {
                     alert('Invalid JSON response: ' + jqXHR.responseText);
                 }
+
+                $('#upload-progress').hide();
+                $('#loading-spinner').hide();
             }
         });
     });
