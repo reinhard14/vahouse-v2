@@ -541,7 +541,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Valid resume/portfolio has been uploaded!',
+            'message' => 'Valid resume/CV has been uploaded!',
             'validResume' => $validResume,
         ]);
 
@@ -571,7 +571,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Valid resume/portfolio has been uploaded!',
+            'message' => 'Valid portfolio has been uploaded!',
             'validPortfolio' => $validPortfolio,
         ]);
 
