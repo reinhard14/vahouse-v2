@@ -188,6 +188,17 @@
                             <small class="text-muted d-block">Files:</small>
                             <span class="d-block text-muted font-weight-bold">Portfolio</span>
                             <small class="font-weight-bold text-orange">
+                                <a href="{{ route('view.file', $user->information->portfolio) }}" target="_blank"
+                                    class="font-weight-bold text-orange">Open
+                                </a>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <span class="d-block text-muted font-weight-bold">Resume</span>
+                            <small class="font-weight-bold text-orange">
                                 <a href="{{ route('view.file', $user->information->resume) }}" target="_blank"
                                     class="font-weight-bold text-orange">Open
                                 </a>
