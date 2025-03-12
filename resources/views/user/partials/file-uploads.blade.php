@@ -68,10 +68,10 @@
 <div class="row mb-4">
     <div class="col">
         <label for="">Video Introduction</label>
-        <input type="file" id="photo_id" name="photo_id" class="form-control file-upload"
+        <input type="file" id="videolink" name="videolink" class="form-control file-upload"
                 data-upload-url="{{ route('user.update-video') }}"
-                accept=".jpeg, .jpg, .png"
-                data-allowed-types="video/mp4,video/mpeg,video/quicktime"
+                accept="video/*"
+                data-allowed-types="video/mp4,video/mpeg,video/quicktime,video/webm,video/x-msvideo"
                 required
         >
         <small class="text-muted">Upload at least 2 minute video introduction.

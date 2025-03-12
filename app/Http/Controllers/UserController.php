@@ -606,6 +606,38 @@ class UserController extends Controller
         ]);
 
     }
+
+    public function uploadVideo(Request $request) {
+
+        $this->validate($request, [
+            'videolink' => 'required|mimes:mp4,avi,wmv|max:128000',
+        ], [
+            'videolink.required' => 'Video file is missing.',
+            'videolink.mimes' => 'Video Introduction file type must be MP4.',
+            'videolink.max' => 'Video file size exceed the 128000 MB limit!',
+        ]);
+
+        if (!$request->hasFile('videolink')) {
+            return back()->with('error', 'Please upload a file.');
+        }
+
+        $validVideoPath = $request->file('videolink')->store('intro_videos', 'public');
+
+        $user_id = Auth::id();
+
+        $validVideo = ApplicantInformation::updateOrCreate(
+            ['user_id' => $user_id],
+            ['videolink' => $validVideoPath]
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Video has been uploaded!',
+            'validId' => $validVideo,
+        ]);
+
+    }
+
     /**
      * Update the specified resource in storage.
      *
