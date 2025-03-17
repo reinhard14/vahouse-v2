@@ -1,18 +1,16 @@
 <div class="row">
     <div class="col">
-
-    <!-- Progress Bar -->
-    <div id="upload-progress">
-        <div id="upload-progress-text">
-            <div id="progress-bar">0%</div>
+        <!-- Progress Bar -->
+        <div id="upload-progress">
+            <div id="upload-progress-text">
+                <div id="progress-bar">0%</div>
+            </div>
         </div>
-    </div>
 
-    <!-- Spinner -->
-    <div id="loading-spinner">
-        <p>Uploading... <span class="spinner-border text-primary"></span></p>
-    </div>
-
+        <!-- Spinner -->
+        <div id="loading-spinner">
+            <p>Uploading... <span class="spinner-border text-primary"></span></p>
+        </div>
     </div>
 </div>
 
@@ -103,6 +101,7 @@
 
 <div class="row mb-4">
     <div class="col">
+        {{-- NO DB Col yet. --}}
         <label for="">Career/Skill Certifications</label>
         <input type="file" id="photo_id" name="photo_id" class="form-control file-upload"
                 {{-- create routes for this --}}

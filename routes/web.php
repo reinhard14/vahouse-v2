@@ -91,8 +91,8 @@ Route::middleware('auth')
         Route::post('user/edit-profile/video', [UserController::class, 'uploadVideo'])->name('user.update-video');
 
         Route::post('user/edit-profile/career-certifications', [UserController::class, 'uploadValidId'])->name('user.update-career-certifications');
-        Route::post('user/edit-profile/inbound', [UserController::class, 'uploadValidId'])->name('user.update-inbound');
-        Route::post('user/edit-profile/outbound', [UserController::class, 'uploadValidId'])->name('user.update-outbound');
+        Route::post('user/edit-profile/mockcall', [UserController::class, 'uploadMockcall'])->name('user.update-mockcall');
+        // Route::post('user/edit-profile/outbound', [UserController::class, 'uploadOutbound'])->name('user.update-outbound');
 
 });
 Route::middleware(['auth', 'check.user.id'])
