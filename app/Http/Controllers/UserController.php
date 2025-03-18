@@ -716,42 +716,64 @@ class UserController extends Controller
         ]);
     }
 
-    public function uploadMockcall(Request $request) {
+    public function uploadInboundCall(Request $request) {
 
         $this->validate($request, [
             'inbound_call' => 'required|mimes:mp4,avi,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
-            'outbound_call' => 'required|mimes:mp4,avi,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
-            'user_id' => 'required',
         ], [
             'inbound_call.required' => 'Inbound call file is missing.',
             'inbound_call.mimes' => 'Inbound call file type is incorrect.',
             'inbound_call.max' => 'Inbound call file size exceed the 32000 MB limit!',
-
-            'outbound_call.required' => 'Outbound call file is missing.',
-            'outbound_call.mimes' => 'Outbound call file type is incorrect.',
-            'outbound_call.max' => 'Outbound call file size exceed the 32000 MB limit!',
         ]);
 
-        $user_id = ['user_id' => Auth::id()];
-        $callSample = CallSample::firstOrNew($user_id);
-
-        if ($request->hasFile('inbound_call') && $request->hasFile('outbound_call')) {
-            $inboundMockcallPath = $request->file('inbound_call')->store('mockcalls/inbounds', 'public');
-            $outboundMockcallPath = $request->file('outbound_call')->store('mockcalls/outbounds', 'public');
-        } else {
+        if (!$request->hasFile('inbound_call')) {
             return back()->with('error', 'Please upload a file.');
         }
 
-        $callSample->inbound_call = $inboundMockcallPath;
-        $callSample->outbound_call = $outboundMockcallPath;
-        $callSample->user_id = $request->input('user_id');
-        $callSample->save();
+        $validInboundPath = $request->file('inbound_call')->store('mockcalls/inbounds', 'public');
+
+        $user_id = Auth::id();
+
+        $validInboundCall = CallSample::updateOrCreate(
+            ['user_id' => $user_id],
+            ['inbound_call' => $validInboundPath],
+        );
 
         return response()->json([
             'success' => true,
             'message' => 'Mock calls has been saved!',
-            'mockcalls' => $callSample,
+            'inbound' => $validInboundCall,
 
+        ]);
+    }
+
+    public function uploadOutboundCall(Request $request) {
+
+        $this->validate($request, [
+            'outbound_call' => 'required|mimes:mp4,avi,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
+        ], [
+            'outbound_call.required' => 'Inbound call file is missing.',
+            'outbound_call.mimes' => 'Inbound call file type is incorrect.',
+            'outbound_call.max' => 'Inbound call file size exceed the 32000 MB limit!',
+        ]);
+
+        if (!$request->hasFile('outbound_call')) {
+            return back()->with('error', 'Please upload a file.');
+        }
+
+        $validOutboundPath = $request->file('outbound_call')->store('mockcalls/outbounds', 'public');
+
+        $user_id = Auth::id();
+
+        $validOutboundCall = CallSample::updateOrCreate(
+            ['user_id' => $user_id],
+            ['outbound_call' => $validOutboundPath],
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Mock calls has been saved!',
+            'outbound' => $validOutboundCall,
         ]);
     }
 

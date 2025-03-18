@@ -232,10 +232,22 @@
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">Mock Call</span>
                             <small class="font-weight-bold text-orange">
-                                Inbound.mp3
+                                @if(!is_null($user->mockcalls->inbound_call))
+                                    <a href="{{ route('view.file', $user->mockcalls->inbound_call) }}" target="_blank"
+                                        class="font-weight-bold text-orange">Inbound
+                                    </a>
+                                @else
+                                    No file yet.
+                                @endif
                             </small>
                             <small class="font-weight-bold text-orange">
-                                Outbound.mp3
+                                @if(!is_null($user->mockcalls->outbound_call))
+                                    <a href="{{ route('view.file', $user->mockcalls->outbound_call) }}" target="_blank"
+                                        class="font-weight-bold text-orange">Outbound
+                                    </a>
+                                @else
+                                    No file yet.
+                                @endif
                             </small>
                         </div>
                     </div>
@@ -244,9 +256,13 @@
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">Valid ID</span>
                             <small>
-                                <a href="{{ route('view.file', $user->information->photo_id) }}" target="_blank"
-                                    class="font-weight-bold text-orange">Open
-                                </a>
+                                @if(!is_null($user->mockcalls->photo_id))
+                                    <a href="{{ route('view.file', $user->information->photo_id) }}" target="_blank"
+                                        class="font-weight-bold text-orange">Open
+                                    </a>
+                                @else
+                                    No file yet.
+                                @endif
                             </small>
                         </div>
                     </div>

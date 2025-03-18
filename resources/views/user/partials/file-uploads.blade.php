@@ -120,19 +120,17 @@
         <label for="">Sample Mock Call</label>
         <small class="d-block text-muted mb-3">Upload at least 2-minute mock-call each. <a href="#">Click here</a> for a sample mockcall</small>
         <span class="d-block">Inbound</span>
-        <input type="file" id="photo_id" name="photo_id" class="form-control file-upload"
-                {{-- create routes for this --}}
-                data-upload-url="{{ route('user.update-valid-id') }}"
-                accept=".jpeg, .jpg, .png"
-                data-allowed-types="video/mp4,video/mpeg,video/quicktime"
+        <input type="file" id="inbound_call" name="inbound_call" class="form-control file-upload"
+                data-upload-url="{{ route('user.update-inbound') }}"
+                accept=".mp4,.avi,.wmv,.mp3,.wav,.aac,.flac,.ogg,.wma"
+                data-allowed-types="video/mp4,video/x-msvideo,video/x-ms-wmv,audio/mpeg,audio/wav,audio/aac,audio/flac,audio/ogg,audio/x-ms-wma"
                 required
         >
         <span class="d-block pt-3">Outbound</span>
-        <input type="file" id="photo_id" name="photo_id" class="form-control file-upload"
-                {{-- create routes for this --}}
-                data-upload-url="{{ route('user.update-valid-id') }}"
-                accept=".jpeg, .jpg, .png"
-                data-allowed-types="video/mp4,video/mpeg,video/quicktime"
+        <input type="file" id="outbound_call" name="outbound_call" class="form-control file-upload"
+                data-upload-url="{{ route('user.update-outbound') }}"
+                accept=".mp4,.avi,.wmv,.mp3,.wav,.aac,.flac,.ogg,.wma"
+                data-allowed-types="video/mp4,video/x-msvideo,video/x-ms-wmv,audio/mpeg,audio/wav,audio/aac,audio/flac,audio/ogg,audio/x-ms-wma"
                 required
         >
 
@@ -140,9 +138,5 @@
 </div>
 
 <x-applicant.guidelines />
-
-{{-- <script>
-    var updateStatusRoute = '{{ route('user.update-valid-id') }}';
-</script> --}}
 
 <script src="{{ asset('dist/js/pages/user-end/file-upload.js') }}"></script>
