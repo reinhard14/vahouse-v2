@@ -421,7 +421,10 @@ class UserController extends Controller
             // 'preferred_shift' => 'required',
             // //user information
             'rate' => 'required',
-            'specify' => 'required_if:positions,Others|string',
+            'specify' => [
+                'required_if:positions,Others',
+                'string'
+            ],
             'days_available' => 'required',
             // 'negotiable' => 'sometimes',
             //use services_offered col for job description field.
@@ -438,7 +441,9 @@ class UserController extends Controller
             'preferred_start.required' => 'Please select start time for working hour shift.',
             'preferred_end.required' => 'Please select end time for work shift.',
             'services_offered' => 'Please enter job description.',
+            'specify.required_if' => 'Please specify the position.',
             'specify.string' => 'Please specify the position for "Others" before proceeding.',
+
         ]);
 
         $user = User::findOrFail($id);
