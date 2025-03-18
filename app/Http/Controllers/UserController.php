@@ -741,7 +741,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Mock calls has been saved!',
+            'message' => 'Inbound call has been saved!',
             'inbound' => $validInboundCall,
 
         ]);
@@ -772,7 +772,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Mock calls has been saved!',
+            'message' => 'Outbound call has been saved!',
             'outbound' => $validOutboundCall,
         ]);
     }
