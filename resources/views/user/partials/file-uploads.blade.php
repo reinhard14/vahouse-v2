@@ -99,43 +99,51 @@
     </div>
 </div>
 
-<div class="row mb-4">
-    <div class="col">
+{{-- <div class="row mb-4">
+    <div class="col"> --}}
         {{-- NO DB Col yet. --}}
-        <label for="">Career/Skill Certifications</label>
-        <input type="file" id="photo_id" name="photo_id" class="form-control file-upload"
+        {{-- <label for="">Career/Skill Certifications</label>
+        <input type="file" id="photo_id" name="photo_id" class="form-control file-upload" --}}
                 {{-- create routes for this --}}
-                data-upload-url="{{ route('user.update-valid-id') }}"
+                {{-- data-upload-url="{{ route('user.update-valid-id') }}"
                 accept=".jpeg, .jpg, .png"
                 data-allowed-types="image/jpeg,image/png,image/gif,application/pdf"
                 required
         >
         <small class="text-muted">Please compile your certifications in .pdf file format </small>
     </div>
-</div>
+</div> --}}
 
+    @php
+        $positions = $user->information->positions ?? '';
+        $searchTerms = ['Callers', 'Tech VAs', 'General VA'];
 
-<div class="row mb-4">
-    <div class="col">
-        <label for="">Sample Mock Call</label>
-        <small class="d-block text-muted mb-3">Upload at least 2-minute mock-call each. <a href="#">Click here</a> for a sample mockcall</small>
-        <span class="d-block">Inbound</span>
-        <input type="file" id="inbound_call" name="inbound_call" class="form-control file-upload"
-                data-upload-url="{{ route('user.update-inbound') }}"
-                accept=".mp4,.avi,.wmv,.mp3,.wav,.aac,.flac,.ogg,.wma"
-                data-allowed-types="video/mp4,video/x-msvideo,video/x-ms-wmv,audio/mpeg,audio/wav,audio/aac,audio/flac,audio/ogg,audio/x-ms-wma"
-                required
-        >
-        <span class="d-block pt-3">Outbound</span>
-        <input type="file" id="outbound_call" name="outbound_call" class="form-control file-upload"
-                data-upload-url="{{ route('user.update-outbound') }}"
-                accept=".mp4,.avi,.wmv,.mp3,.wav,.aac,.flac,.ogg,.wma"
-                data-allowed-types="video/mp4,video/x-msvideo,video/x-ms-wmv,audio/mpeg,audio/wav,audio/aac,audio/flac,audio/ogg,audio/x-ms-wma"
-                required
-        >
+        $matchFound = array_filter($searchTerms, fn($term) => str_contains($positions, $term));
+    @endphp
 
-    </div>
-</div>
+    @if(!empty($matchFound))
+        <div class="row mb-4">
+            <div class="col">
+                <label for="">Sample Mock Call</label>
+                <small class="d-block text-muted mb-3">Upload at least 2-minute mock-call each. <a href="#">Click here</a> for a sample mockcall</small>
+                <span class="d-block">Inbound</span>
+                <input type="file" id="inbound_call" name="inbound_call" class="form-control file-upload"
+                        data-upload-url="{{ route('user.update-inbound') }}"
+                        accept=".mp4,.avi,.wmv,.mp3,.wav,.aac,.flac,.ogg,.wma"
+                        data-allowed-types="video/mp4,video/x-msvideo,video/x-ms-wmv,audio/mpeg,audio/wav,audio/aac,audio/flac,audio/ogg,audio/x-ms-wma"
+                        required
+                >
+                <span class="d-block pt-3">Outbound</span>
+                <input type="file" id="outbound_call" name="outbound_call" class="form-control file-upload"
+                        data-upload-url="{{ route('user.update-outbound') }}"
+                        accept=".mp4,.avi,.wmv,.mp3,.wav,.aac,.flac,.ogg,.wma"
+                        data-allowed-types="video/mp4,video/x-msvideo,video/x-ms-wmv,audio/mpeg,audio/wav,audio/aac,audio/flac,audio/ogg,audio/x-ms-wma"
+                        required
+                >
+
+            </div>
+        </div>
+    @endif
 
 <x-applicant.guidelines />
 
