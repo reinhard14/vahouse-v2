@@ -188,9 +188,13 @@
                             <small class="text-muted d-block">Files:</small>
                             <span class="d-block text-muted font-weight-bold">Portfolio</span>
                             <small class="font-weight-bold text-orange">
-                                <a href="{{ route('view.file', $user->information->portfolio) }}" target="_blank"
-                                    class="font-weight-bold text-orange">Open
-                                </a>
+                                @if(!is_null($user->information->portfolio))
+                                    <a href="{{ route('view.file', $user->information->portfolio) }}" target="_blank"
+                                        class="font-weight-bold text-orange">Open
+                                    </a>
+                                @else
+                                    No file yet.
+                                @endif
                             </small>
                         </div>
                     </div>
@@ -199,9 +203,13 @@
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">Resume</span>
                             <small class="font-weight-bold text-orange">
-                                <a href="{{ route('view.file', $user->information->resume) }}" target="_blank"
-                                    class="font-weight-bold text-orange">Open
-                                </a>
+                                @if(!is_null($user->information->disc_results))
+                                    <a href="{{ route('view.file', $user->information->resume) }}" target="_blank"
+                                        class="font-weight-bold text-orange">Open
+                                    </a>
+                                @else
+                                    No file yet.
+                                @endif
                             </small>
                         </div>
                     </div>
@@ -210,9 +218,13 @@
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">DISC</span>
                             <small class="font-weight-bold text-orange">
-                                <a href="{{ route('view.file', $user->information->disc_results) }}" target="_blank"
-                                    class="font-weight-bold text-orange">Open
-                                </a>
+                                @if(!is_null($user->information->disc_results))
+                                    <a href="{{ route('view.file', $user->information->disc_results) }}" target="_blank"
+                                        class="font-weight-bold text-orange">Open
+                                    </a>
+                                @else
+                                    No file yet.
+                                @endif
                             </small>
                         </div>
                     </div>
@@ -221,9 +233,13 @@
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">Intro Video</span>
                             <small class="font-weight-bold text-orange">
-                                <a href="{{ route('view.file', $user->information->videolink) }}" target="_blank"
-                                    class="font-weight-bold text-orange">Open
-                                </a>
+                                @if(!is_null($user->information->videolink))
+                                    <a href="{{ route('view.file', $user->information->videolink) }}" target="_blank"
+                                        class="font-weight-bold text-orange">Open
+                                    </a>
+                                @else
+                                    No file yet.
+                                @endif
                             </small>
                         </div>
                     </div>
@@ -237,7 +253,7 @@
                                         class="font-weight-bold text-orange">Inbound
                                     </a>
                                 @else
-                                    No file yet.
+                                    No Inbould yet.
                                 @endif
                             </small>
                             <small class="font-weight-bold text-orange">
@@ -246,7 +262,7 @@
                                         class="font-weight-bold text-orange">Outbound
                                     </a>
                                 @else
-                                    No file yet.
+                                    No Outbound yet.
                                 @endif
                             </small>
                         </div>
@@ -256,7 +272,7 @@
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">Valid ID</span>
                             <small>
-                                @if(!is_null($user->mockcalls->photo_id))
+                                @if(!is_null($user->information->photo_id))
                                     <a href="{{ route('view.file', $user->information->photo_id) }}" target="_blank"
                                         class="font-weight-bold text-orange">Open
                                     </a>
