@@ -438,6 +438,7 @@ class UserController extends Controller
             'preferred_start.required' => 'Please select start time for working hour shift.',
             'preferred_end.required' => 'Please select end time for work shift.',
             'services_offered' => 'Please enter job description.',
+            'specify.string' => 'Please specify the position for "Others" before proceeding.',
         ]);
 
         $user = User::findOrFail($id);
