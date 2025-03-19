@@ -136,9 +136,14 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <strong>Copyright &copy; {{ \Carbon\Carbon::now()->year }} <a href="#"  data-toggle="tooltip" data-placement="top" title="Developed by: Reinhard">VA House Corporation Management System</a>.</strong>
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
+            <strong class="text-orange">Copyright &copy; {{ \Carbon\Carbon::now()->year }}
+                <a href="#" class=" text-orange" data-toggle="tooltip" data-placement="top" title="Developed by: Reinhard">VA House Corporation Management System</a>.
+            </strong>
+            <span class="text-orange">
+                All rights reserved.
+            </span>
+
+            <div class="float-right d-none d-sm-inline-block text-orange">
                 <b>Version</b> 2.0.0
             </div>
         </footer>
