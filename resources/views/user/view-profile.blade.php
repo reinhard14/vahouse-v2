@@ -26,7 +26,7 @@
                 <div class="col">
                     <span class="d-block mt-5 pt-5">{{ $user->suffix }} {{ $user->name }} {{ $user->middlename }} {{ $user->lastname }} </span>
                     <span class="badge badge-pill badge-success span-normal-text">Active</span>
-                    <h5> Quality Assurance, Web Developer </h5>
+                    <h5> {{ $workList }} </h5>
                     <span class="text-orange"><i class="bi bi-patch-check-fill"></i> </span> <small class=""> Tier 1 VA </small>
                     <span class="text-orange pl-3"><i class="bi bi-shield-fill-check"></i></span><small> HR Unverified</small>
                 </div>
@@ -45,7 +45,7 @@
                             <span class="badge badge-pill medium-icon p-2"><i class="bi bi-briefcase"></i></span>
                         </div>
                         <div class="col text-muted">
-                            Looking for <strong> {{ str_replace(['[', ']'], '', $user->references->work_status) }}</strong> for <strong>40 hours</strong> per week. <strong>{{ $user->information->rate }}</strong> Pesos monthly salary.
+                            Looking for <strong> {{ str_replace(['[', ']'], '', $user->references->work_status ?? '') }}</strong> for <strong>40 hours</strong> per week. <strong>{{ $user->information->rate ?? '' }}</strong> Pesos monthly salary.
                         </div>
                     </div>
 
@@ -91,9 +91,9 @@
                     <h5 class="text-muted">Technical Skills</h5>
 
                     @php
-                        $skills = json_decode($user->skillsets->skill, true) ?? [];
-                        $otherSkills = json_decode($user->skillsets->softskill, true) ?? [];
-                        $tools = json_decode($user->skillsets->tool, true) ?? [];
+                        $skills = !empty($user->skillsets) ? json_decode($user->skillsets->skill, true) ?? [] : [];
+                        $otherSkills = !empty($user->skillsets) ? json_decode($user->skillsets->softskill, true) ?? [] : [];
+                        $tools = !empty($user->skillsets) ? json_decode($user->skillsets->tool, true) ?? [] : [];
                     @endphp
 
                     <div class="mb-3">
@@ -167,10 +167,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="text-muted mb-3">VA Information</h5>
-
                     <small class="text-muted">Age</small>
                     <p class="text-muted font-weight-bold">
-                        {{ $ageNow->diffForHumans(null, true) ?? ''}}
+                        {{ $ageNow ? $ageNow->diffForHumans(null, true) : '' }}
                     </p>
 
                     <small class="text-muted">Gender</small>
@@ -188,7 +187,7 @@
                             <small class="text-muted d-block">Files:</small>
                             <span class="d-block text-muted font-weight-bold">Portfolio</span>
                             <small class="font-weight-bold text-orange">
-                                @if(!is_null($user->information->portfolio))
+                                @if(isset($user->information) && $user->information->portfolio)
                                     <a href="{{ route('view.file', $user->information->portfolio) }}" target="_blank"
                                         class="font-weight-bold text-orange">Open
                                     </a>
@@ -203,7 +202,7 @@
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">Resume</span>
                             <small class="font-weight-bold text-orange">
-                                @if(!is_null($user->information->disc_results))
+                                @if(isset($user->information->resume) && $user->information->resume)
                                     <a href="{{ route('view.file', $user->information->resume) }}" target="_blank"
                                         class="font-weight-bold text-orange">Open
                                     </a>
@@ -218,7 +217,7 @@
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">DISC</span>
                             <small class="font-weight-bold text-orange">
-                                @if(!is_null($user->information->disc_results))
+                                @if(isset($user->information->disc_results) && $user->information->resume)
                                     <a href="{{ route('view.file', $user->information->disc_results) }}" target="_blank"
                                         class="font-weight-bold text-orange">Open
                                     </a>
@@ -233,7 +232,7 @@
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">Intro Video</span>
                             <small class="font-weight-bold text-orange">
-                                @if(!is_null($user->information->videolink))
+                                @if(isset($user->information->videolink) && $user->information->videolink)
                                     <a href="{{ route('view.file', $user->information->videolink) }}" target="_blank"
                                         class="font-weight-bold text-orange">Open
                                     </a>
@@ -248,7 +247,7 @@
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">Mock Call</span>
                             <small class="font-weight-bold text-orange">
-                                @if(!is_null($user->mockcalls->inbound_call))
+                                @if(isset($user->mockcalls->inbound_call) && $user->mockcalls->inbound_call)
                                     <a href="{{ route('view.file', $user->mockcalls->inbound_call) }}" target="_blank"
                                         class="font-weight-bold text-orange">Inbound
                                     </a>
@@ -257,7 +256,7 @@
                                 @endif
                             </small>
                             <small class="font-weight-bold text-orange">
-                                @if(!is_null($user->mockcalls->outbound_call))
+                                @if(isset($user->mockcalls->outbound_call) && $user->mockcalls->outbound_call)
                                     <a href="{{ route('view.file', $user->mockcalls->outbound_call) }}" target="_blank"
                                         class="font-weight-bold text-orange">Outbound
                                     </a>
@@ -272,7 +271,7 @@
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">Valid ID</span>
                             <small>
-                                @if(!is_null($user->information->photo_id))
+                                @if(isset($user->information->photo_id) && $user->information->photo_id)
                                     <a href="{{ route('view.file', $user->information->photo_id) }}" target="_blank"
                                         class="font-weight-bold text-orange">Open
                                     </a>
