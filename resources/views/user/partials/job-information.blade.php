@@ -148,6 +148,9 @@
 
             <div class="row mt-3">
                 <div class="col">
+                    @php
+                        $negotiable = optional($user->information)->negotiable;
+                    @endphp
                     <input type="checkbox" id="negotiable" name="negotiable" class="formCheckInput" value="yes"
                         {{ ($user->information->negotiable==="yes") ? 'checked' : '' }} >
                     <label for="negotiable" class="custom-label">  Salary is negotiable? <span class="text-muted">(Check if yes)</span></label>
